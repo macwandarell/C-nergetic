@@ -7,3 +7,4 @@
 <li> Vedant Savani <strong>(BT2024191)</strong></li>
 <li> Macwan Darell Suhrudkumar <strong>(IMT2024054)</strong></li>
 
+![image](https://github.com/user-attachments/assets/39fea929-8f0a-4fe1-81bc-f2e14c08b8a3)
