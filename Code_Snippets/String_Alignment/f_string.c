@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdarg.h>
+#include <time.h>
 
 #ifdef _WIN32
 #include <windows.h>
@@ -70,4 +71,33 @@ void clear_console() {
     // Linux or macOS
     system("clear");
 #endif
+}
+
+void date_d(char* buffer, size_t buffer_size) {
+    time_t t = time(NULL);
+    struct tm* tm_info = localtime(&t);
+
+    // Get the day with suffix (st/nd/rd/th)
+    int day = tm_info->tm_mday;
+    char suffix[3];
+    if (day >= 11 && day <= 13) {
+        strcpy(suffix, "th");
+    } else {
+        switch (day % 10) {
+            case 1: strcpy(suffix, "st"); break;
+            case 2: strcpy(suffix, "nd"); break;
+            case 3: strcpy(suffix, "rd"); break;
+            default: strcpy(suffix, "th"); break;
+        }
+    }
+
+    // Format the date (e.g., "23rd, June 2024")
+    strftime(buffer, buffer_size, "%d", tm_info); // Get the day
+    strcat(buffer, suffix);  // Add the suffix (st/nd/rd/th)
+    strftime(buffer + strlen(buffer), buffer_size - strlen(buffer), ", %B %Y", tm_info); // Add the month and year
+
+    // Add Time in 12-hour format with AM/PM
+    char time_str[10];
+    strftime(time_str, sizeof(time_str), " %I:%M %p", tm_info);  // Hour and Minute with AM/PM
+    strcat(buffer, time_str);
 }

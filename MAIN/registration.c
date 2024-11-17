@@ -1,5 +1,4 @@
 #include "../Code_Snippets/String_Alignment/f_string.h"
-#include "../Code_Snippets/
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -29,6 +28,10 @@ void read_csv(const char *filename) {
 
 void registration() {
     f_string_format(1, "Welcome To The Registration Page!");
+    char s[100];
+    date_d(s,sizeof(s));
+    f_string_format(2, "%s     ",s);
+
 }
 
 int main() {

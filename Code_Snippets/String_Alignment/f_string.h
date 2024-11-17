@@ -13,4 +13,6 @@ void f_string_format(int align, const char* format, ...);
 // Function to clear the console
 void clear_console();
 
+void date_d(char* buffer, size_t buffer_size);
+
 #endif // F_STRING_H
