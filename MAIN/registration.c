@@ -1,20 +1,39 @@
 #include "../Code_Snippets/String_Alignment/f_string.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+void write_csv(const char *filename) {
+    FILE *file = fopen(filename, "w");
+    fprintf(file, "1,John Doe,25,88.5\n");
+    fprintf(file, "2,Jane Smith,30,92.3\n");
+    fprintf(file, "3,Sam Brown,22,74.0\n");
+
+    fclose(file);
+}
+
+void read_csv(const char *filename) {
+    FILE *file = fopen(filename, "r");
+    char buffer[1024];
+
+    while (fgets(buffer, sizeof(buffer), file)) {
+        char *token = strtok(buffer, ",");
+        while (token) {
+            printf("%s", token);
+            token = strtok(NULL, ",");
+        }
+    }
+    fclose(file);
+}
+
+void registration() {
+    f_string_format(1, "Welcome To The Registration Page!");
+}
 
 int main() {
-    // Test case: Center-aligned string
-    f_string_format(1, "Welcome to the %s module!", "f_string");
-
-    // Test case: Left-aligned string
-    f_string_format(0, "This is a left-aligned number: %d", 42);
-
-    // Test case: Center-aligned long string
-    f_string_format(1, "This is a demonstration of a dynamically adjusted terminal width.");
-
-    // Test case: Right-aligned string
-    f_string_format(2, "This is a right-aligned text example.");
-
-    // Test case: Right-aligned long string
-    f_string_format(2, "A right-aligned string that might span a longer width in the terminal.");
-
+    const char *filename = "data.csv";
+//    write_csv(filename);
+//    read_csv(filename);
+    registration();
     return 0;
 }
