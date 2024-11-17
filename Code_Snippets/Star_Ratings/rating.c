@@ -4,6 +4,10 @@
 
 // Function to print stars based on rating
 void rating_to_stars(float rating) {
+    #ifdef _WIN32
+    // Set code page to UTF-8 for Windows
+    SetConsoleOutputCP(CP_UTF8);
+    #endif
     // Ensure rating is between 0 and 5
     if (rating < 0 || rating > 5) {
         printf("Rating should be between 0 and 5\n");
@@ -16,17 +20,17 @@ void rating_to_stars(float rating) {
 
     // Print full stars
     for (int i = 0; i < full_stars; i++) {
-        printf("★");
+        printf("★ ");
     }
 
     // Print half star
     if (half_star) {
-        printf("✮");
+        printf("✮ ");
     }
 
     // Print empty stars
     for (int i = 0; i < empty_stars; i++) {
-        printf("☆");
+        printf("☆ ");
     }
 
     printf("\n");

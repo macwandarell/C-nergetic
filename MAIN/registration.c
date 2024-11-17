@@ -1,4 +1,5 @@
 #include "../Code_Snippets/String_Alignment/f_string.h"
+#include "../Code_Snippets/Star_Ratings/rating.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -31,8 +32,9 @@ void registration() {
     f_string_format(1, "Welcome To The Registration Page!");
     char s[100];
     date_d(s,sizeof(s));
-    f_string_format(2, "%s",s);
-
+    f_string_format(2, "%s        ",s);
+    print_border("*");
+    rating_to_stars(3.5f);
 }
 
 int main() {
