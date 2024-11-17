@@ -60,3 +60,14 @@ void f_string_format(int align, const char* format, ...) {
         printf("%s\n", buffer);
     }
 }
+
+// Function to clear the console
+void clear_console() {
+#ifdef _WIN32
+    // Windows
+    system("cls");
+#else
+    // Linux or macOS
+    system("clear");
+#endif
+}
