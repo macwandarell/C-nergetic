@@ -1,7 +1,8 @@
-// rating.c
 #include <stdio.h>
-#include "rating.h"  // Include the header file
+#include <stdlib.h>
+#include "rating.h" // Include the header file for the rating function
 
+// Function to print stars based on rating
 void rating_to_stars(float rating) {
     // Ensure rating is between 0 and 5
     if (rating < 0 || rating > 5) {
