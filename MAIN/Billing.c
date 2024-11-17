@@ -13,7 +13,7 @@ int main()
     printf("\n");
     f_string_format(1,"\033[1;38;2;0;100;0mBilling Information\033[0m\n");
 
-    printf("")
+    printf("\n");
     printf("\t");
 
 
