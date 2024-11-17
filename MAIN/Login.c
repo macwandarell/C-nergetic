@@ -26,19 +26,26 @@ void read_csv(const char *filename) {
     fclose(file);
 }
 
-void registration() {
+void login() {
+    struct Customer{
+        char user[50];
+        char pass[50];
+        char email[50];
+    };
+
+
     print_border("*");
     f_string_format(1, "Welcome To The Registration Page!");
     char s[100];
     date_d(s,sizeof(s));
     f_string_format(2, "%s        ",s);
     print_border("*");
+
+    
 }
 
 int main() {
     const char *filename = "data.csv";
-//    write_csv(filename);
-//    read_csv(filename);
-    registration();
+    login();
     return 0;
 }
