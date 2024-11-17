@@ -27,10 +27,11 @@ void read_csv(const char *filename) {
 }
 
 void registration() {
+    print_border("*");
     f_string_format(1, "Welcome To The Registration Page!");
     char s[100];
     date_d(s,sizeof(s));
-    f_string_format(2, "%s     ",s);
+    f_string_format(2, "%s",s);
 
 }
 

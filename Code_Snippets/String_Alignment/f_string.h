@@ -13,6 +13,9 @@ void f_string_format(int align, const char* format, ...);
 // Function to clear the console
 void clear_console();
 
+// Function to get the terminal width
+void print_border(char *border);
+
 void date_d(char* buffer, size_t buffer_size);
 
 #endif // F_STRING_H

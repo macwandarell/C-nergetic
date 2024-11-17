@@ -30,6 +30,14 @@ static int get_terminal_width() {
     return width;
 }
 
+void print_border(char *border) {
+    int width = get_terminal_width();
+    for (int i = 0; i < width; i++) {
+        printf("%s", border);
+    }
+    printf("\n");
+}
+
 // Function to format and print a string with alignment
 void f_string_format(int align, const char* format, ...) {
     int width = get_terminal_width(); // Get dynamic terminal width
