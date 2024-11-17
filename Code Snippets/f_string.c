@@ -41,11 +41,18 @@ void f_string_format(int align, const char* format, ...) {
     va_end(args);
 
     int len = strlen(buffer); // Length of the formatted string
-    int padding = (width - len) / 2; // Calculate padding for centering
+    int padding = width - len; // Calculate padding for right alignment
 
     if (align == 1) { // Center alignment
+        int center_padding = padding / 2;
+        if (center_padding > 0) {
+            printf("%*s%s\n", center_padding, "", buffer);
+        } else {
+            printf("%s\n", buffer); // If the string is too wide
+        }
+    } else if (align == 2) { // Right alignment
         if (padding > 0) {
-            printf("%*s%s\n", padding, "", buffer);
+            printf("%*s\n", width, buffer);
         } else {
             printf("%s\n", buffer); // If the string is too wide
         }

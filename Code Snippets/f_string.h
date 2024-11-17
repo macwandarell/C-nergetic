@@ -3,7 +3,7 @@
 
 // Function to format and print a string
 // Parameters:
-// - align: 1 for center-aligned, 0 for left-aligned
+// - align: 0 for left-aligned, 1 for center-aligned, 2 for right-aligned
 // - format: the format string (like printf)
 // - ...: additional arguments for formatting
 void f_string_format(int align, const char* format, ...);

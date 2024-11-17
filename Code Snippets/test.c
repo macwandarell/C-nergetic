@@ -10,5 +10,11 @@ int main() {
     // Test case: Center-aligned long string
     f_string_format(1, "This is a demonstration of a dynamically adjusted terminal width.");
 
+    // Test case: Right-aligned string
+    f_string_format(2, "This is a right-aligned text example.");
+
+    // Test case: Right-aligned long string
+    f_string_format(2, "A right-aligned string that might span a longer width in the terminal.");
+
     return 0;
 }
