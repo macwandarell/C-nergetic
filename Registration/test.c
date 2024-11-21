@@ -11,6 +11,7 @@ int main(){
     struct Customer customers[p];
     int i=0;
     FILE* fp=fopen("/mnt/Users/Yashvi Mehta/OneDrive/Desktop/C-nergetic/Registration/output.csv","r");
+
     if(!fp)
         printf("File does not exist\n.");
     else{
