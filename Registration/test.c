@@ -1,14 +1,33 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include "f_string.h"
 #include <stdbool.h>
+#ifdef _WIN32
+#include <windows.h>
+#define SLEEP(seconds) Sleep((seconds) * 1000)
+#else
+#include <unistd.h>
+#define SLEEP(seconds) sleep(seconds)
+#endif
 
+
+
+void registerYourself();
 typedef struct Customer{
     char username[51];
     char email[255];
     char password[31];
     struct Customer *next;
 }Customer;
+void freeMemory(Customer* head) {
+    Customer* temp;
+    while (head != NULL) {
+        temp = head;
+        head = head->next;
+        free(temp);
+    }
+}
 Customer* create_new_customer(char* username,char* email,char* password){
     Customer* new_customer=(Customer*)malloc(sizeof(Customer));
     strncpy(new_customer->username,username,50);
@@ -52,7 +71,43 @@ bool emailExists(struct Customer *current, char *email) {
 }
 
 int main(){
+    clear_console();
     Customer* next_node=NULL;
+         int choice;
+
+    do {
+        // Display menu
+        f_string_format(1, "\033[1m==============\033[0m");
+        f_string_format(1, "\033[38;5;208m          TRIVAGO   \033[0m");
+        f_string_format(1, "\033[1m  ==============\033[0m\n");
+        f_string_format(0, "\033[33m 1. Register Yourself\033[0m");
+        f_string_format(0, "\033[33m 2. Exit\033[0m");
+        f_string_format(1, "\033[1m ==============================\033[0m\n");
+        printf("Enter your choice: ");
+   
+        scanf("%d", &choice);
+        getchar();
+        printf("\n"); // Clear newline character from input buffer
+
+        switch (choice) {
+            case 1:
+                registerYourself();
+                break;
+            case 2:
+                printf("Exiting registration page. Goodbye!\n");
+                SLEEP(4);
+                freeMemory(next_node);  // Free all allocated memory
+                break;
+
+            default:
+                printf("Invalid input. Please try again.\n");
+        }
+    } while (choice != 2);
+
+    return 0;
+
+
+
     FILE* fp=fopen("output.csv","r");
 
     if(!fp)
@@ -86,9 +141,12 @@ int main(){
         while (temp != NULL) {
             printf("Username: %s, Email: %s, Password: %s\n", temp->username, temp->email, temp->password);
             temp = temp->next;
-        }
-        char username[51], email[255], password[31];
+        }return 0;}
+        
+void registerYourself(){
+        Customer* next_node=NULL;
 
+    char username[51], email[255], password[31];
     while (1) {
         printf("Enter a username: ");
         scanf("%s", username);  // It's safer to use fgets in real applications
@@ -114,7 +172,7 @@ int main(){
 
     printf("Enter your password: ");
     scanf("%s", password);  // Secure input handling recommended here too
-
+    printf("\n");
     // Success message
     
 
@@ -125,9 +183,7 @@ int main(){
     fprintf(fp1,"%s,%s,%s\n",username,email,password);
 
     printf("Customer registered successfully!\n");
-    printf("Username: %s\n", username);
-    printf("Email: %s\n", email);
-    printf("Password: %s\n", password);
+    SLEEP(4);
+   }
     
-    return 0;
-}
+
