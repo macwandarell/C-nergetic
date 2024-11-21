@@ -13,13 +13,15 @@
 
 
 
-void registerYourself();
 typedef struct Customer{
     char username[51];
     char email[255];
     char password[31];
     struct Customer *next;
 }Customer;
+void registerYourself();
+Customer* next_node=NULL;
+
 void freeMemory(Customer* head) {
     Customer* temp;
     while (head != NULL) {
@@ -72,7 +74,6 @@ bool emailExists(struct Customer *current, char *email) {
 
 int main(){
     clear_console();
-    Customer* next_node=NULL;
          int choice;
 
     do {
@@ -104,7 +105,6 @@ int main(){
         }
     } while (choice != 2);
 
-    return 0;
 
 
 
@@ -124,7 +124,6 @@ int main(){
             if(row==1)
                 continue;
             char *value=strtok(buffer,", ");
-            Customer* new_customer=(Customer*)malloc(sizeof(Customer));
             while(value){
                 if(column==0){strncpy(username,value,50);
                     username[50]='\0';}
@@ -144,7 +143,6 @@ int main(){
         }return 0;}
         
 void registerYourself(){
-        Customer* next_node=NULL;
 
     char username[51], email[255], password[31];
     while (1) {
@@ -174,7 +172,6 @@ void registerYourself(){
     scanf("%s", password);  // Secure input handling recommended here too
     printf("\n");
     // Success message
-    
 
     FILE* fp1=fopen("output.csv","a");
     if(!fp1)
@@ -184,6 +181,8 @@ void registerYourself(){
 
     printf("Customer registered successfully!\n");
     SLEEP(4);
+    add_to_list(next_node, username, email, password);
+
    }
     
 
