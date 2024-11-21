@@ -10,7 +10,7 @@ int main(){
     int p=100;
     struct Customer customers[p];
     int i=0;
-    FILE* fp=fopen("/Users/darellmacwan/Desktop/C-nergetic/Registration/output.csv","r");
+    FILE* fp=fopen("/mnt/Users/Yashvi Mehta/OneDrive/Desktop/C-nergetic/Registration/output.csv","r");
     if(!fp)
         printf("File does not exist\n.");
     else{
