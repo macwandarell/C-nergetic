@@ -116,18 +116,18 @@ int main(){
     scanf("%s", password);  // Secure input handling recommended here too
 
     // Success message
+    
+
+    FILE* fp1=fopen("output.csv","a");
+    if(!fp1)
+        printf("File does not exist\n.");
+    else
+    fprintf(fp1,"%s,%s,%s\n",username,email,password);
+
     printf("Customer registered successfully!\n");
     printf("Username: %s\n", username);
     printf("Email: %s\n", email);
     printf("Password: %s\n", password);
-
-    /*printf("%i",i);
-    FILE* fp1=fopen("/mnt/Users/Yashvi Mehta/OneDrive/Desktop/C-nergetic/Registration/output.csv","a+");*/
-
-
-    /*char string1[10];
-    scanf("%s",string1);
-    getchar();
-    printf("%s\n",string1);*/
+    
     return 0;
 }
