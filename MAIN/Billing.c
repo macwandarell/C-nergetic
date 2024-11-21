@@ -7,41 +7,43 @@
 int main()
 {
     clear_console();
-    print_border("-");
+    print_border("*");
+    
     
     f_string_format(0,"\033[1;38;2;255;165;0mTrivago\033[0m\n");
     char arr[100];
     date_d(arr,sizeof(arr));
     f_string_format(2,"%s",arr);
+    print_border("*");
+    
+    printf("\n");
+    f_string_format(1,"\t\033[1;38;2;0;100;0mBilling Information\033[0m\n");
+
     print_border("-");
-    printf("\n");
-    f_string_format(1,"\033[1;38;2;255;255;255mBilling Information\033[0m\n");
-
-    f_string_format(1,"\033[1;38;2;255;25500;255m    **********************************************\033[0m");
-    f_string_format(1,cr_w"<  Price for the Room:                >\033[0m");
-    f_string_format(1,cr_w"<  Price for the stay:                >\033[0m");
-    f_string_format(1,cr_w"<  Price for ext commodities:         >\033[0m");
-    f_string_format(1,cr_w "<  Discount for you:                  >\033[0m");
+    print_border("-");
+    f_string_format(1,"Price for the Room : 560");
+    f_string_format(1,"Price for the stay : 59696");
+    f_string_format(1,"Price for ext commodities : xtra emcekc");
+    f_string_format(1, "Discount for you : ckdmckdmc");
     int a=21;
-    f_string_format(1,cr_w"<  Payment to be made: %d             >\033[0m",a);
-    f_string_format(1,"\033[1;38;2;255;25500;255m    **********************************************\033[0m");
+    f_string_format(1,"Payment to be made : %d",a);
+    
 
-    printf("\n ");
-    f_string_format(1,"----------------------------------------------------------------------------------------");
-    printf("\n");
+   
 
-    f_string_format(1,"\033[1;38;2;255;25500;255m    **********************************************\033[0m\n");
-    f_string_format(1,cr_w"<  Check out:                 >\033[0m");
-    f_string_format(1,cr_w"<  Check In:                  >\033[0m");
-    f_string_format(1,cr_w"<  Hotel Name:                >\033[0m");
-    f_string_format(1,cr_w"<  Location:                  >\033[0m");
+    print_border("-");
+    
+    f_string_format(1,"Check out : cedce");
+    f_string_format(1,"Check In : cece");
+    f_string_format(1,"Hotel Name : cece");
+    f_string_format(1,"Location : cecec");
     int b=265651;
-    f_string_format(1,cr_w"<  Booking Date: %d           >\033[0m",b);
-    f_string_format(1,cr_w"<  Commodities:               >\033[0m");
-    f_string_format(1,"\033[1;38;2;255;25500;255m    **********************************************\033[0m");
+    f_string_format(1,"\t Booking Date : %d",b);
+    f_string_format(1,"Commodities : ");
+    print_border("-");
 
     printf("\n \n \n \n");
-    f_string_format(1,"Customer Care:");
-    f_string_format(1,"email id:");
+    f_string_format(1,"Customer Care :");
+    f_string_format(1,"email id :");
     f_string_format(1,"\u00A9\n");
     }
