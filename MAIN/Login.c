@@ -3,45 +3,79 @@
 #include <stdlib.h>
 #include <string.h>
 
-void write_csv(const char *filename) {
-    FILE *file = fopen(filename, "w");
-    fprintf(file, "1,John Doe,25,88.5\n");
-    fprintf(file, "2,Jane Smith,30,92.3\n");
-    fprintf(file, "3,Sam Brown,22,74.0\n");
+typedef struct Customer{
+    char username[51];
+    char email[255];
+    char password[31];
+    struct Customer *next;
+}Customer;
 
-    fclose(file);
-}
-
-void read_csv(const char *filename) {
-    FILE *file = fopen(filename, "r");
-    char buffer[1024];
-
-    while (fgets(buffer, sizeof(buffer), file)) {
-        char *token = strtok(buffer, ",");
-        while (token) {
-            printf("%s", token);
-            token = strtok(NULL, ",");
-        }
+void printCustomers(Customer* head) {
+    Customer* current = head;
+    while (current != NULL) {
+        printf("Username: %s, Email: %s, Password: %s\n", current->username, current->email, current->password);
+        current = current->next;
     }
-    fclose(file);
 }
+
+
+Customer* createCustomer(const char* username, const char* email, const char* password) {
+    Customer* newCustomer = (Customer*) malloc (sizeof(Customer));
+
+    strcpy(newCustomer->username, username);
+    strcpy(newCustomer->email, email);
+    strcpy(newCustomer->password, password);
+
+    newCustomer->next = NULL;
+    return newCustomer;
+}
+
+void appendCustomer(Customer** head, const char* username, const char* email, const char* password) {
+    Customer* newCustomer = createCustomer(username, email, password);
+
+    if (*head == NULL) {
+        *head = newCustomer;
+    } else {
+        Customer* current = *head;
+        while (current->next != NULL) {
+            current = current->next;
+        }
+        current->next = newCustomer;
+    }
+}
+
+
 
 void login() {
-    struct Customer{
-        char user[50];
-        char pass[50];
-        char email[50];
-    };
+    FILE* fp = fopen("output.csv", "r");
+    if (!fp) {
+    printf("Error: Unable to open the file.\n");
+    return;
+    }
+    char buffer[1024];
+    int row = 1;
+    Customer* customerList = NULL;
+    while (fgets(buffer, sizeof(buffer), fp)) {
+        int column = 0;
 
+        char* username = strtok(buffer, ",");
+        char* email = strtok(NULL, ",");
+        char* password = strtok(NULL, ",");
+        password[strcspn(password, "\n")] = '\0'; // Remove trailing newline
+        appendCustomer(&customerList, username, email, password); // Add to the linked list
+        row++;
+    }
+    fclose(fp);
 
     print_border("*");
     f_string_format(1, "Welcome To The Registration Page!");
     char s[100];
     date_d(s,sizeof(s));
     f_string_format(2, "%s        ",s);
-    print_border("*");
+    print_border("*"); 
 
-    
+    printCustomers(customerList);
+    printf("HEllo");
 }
 
 int main() {
