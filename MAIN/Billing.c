@@ -3,9 +3,12 @@
 #define cr_green "\033[1;38;2;0;100;0m"
 #define cr_yellow "\t \033[1;38;2;255;255;0m"
 #define cr_w "\t \033[1;38;255;255;255m"
+#include <locale.h>
 
 int main()
-{
+{  
+    setlocale(LC_ALL, "");
+
     clear_console();
     print_border("*");
     
@@ -45,5 +48,5 @@ int main()
     printf("\n \n \n \n");
     f_string_format(1,"Customer Care :");
     f_string_format(1,"email id :");
-    f_string_format(1,"\u00A9\n");
+    f_string_format(1,"CompanyName\u00A9\n");
     }
