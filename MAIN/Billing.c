@@ -36,5 +36,4 @@ int main()
     f_string_format(1, "Customer Care:");
     f_string_format(1, "email id:");
     f_string_format(1,"\u00A9\n");
-    
-}
+    }
