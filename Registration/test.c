@@ -76,38 +76,6 @@ int main(){
     clear_console();
          int choice;
 
-    do {
-        // Display menu
-        f_string_format(1, "\033[1m==============\033[0m");
-        f_string_format(1, "\033[38;5;208m          TRIVAGO   \033[0m");
-        f_string_format(1, "\033[1m  ==============\033[0m\n");
-        f_string_format(0, "\033[33m 1. Register Yourself\033[0m");
-        f_string_format(0, "\033[33m 2. Exit\033[0m");
-        f_string_format(1, "\033[1m ==============================\033[0m\n");
-        printf("Enter your choice: ");
-   
-        scanf("%d", &choice);
-        getchar();
-        printf("\n"); // Clear newline character from input buffer
-
-        switch (choice) {
-            case 1:
-                registerYourself();
-                break;
-            case 2:
-                printf("Exiting registration page. Goodbye!\n");
-                SLEEP(4);
-                freeMemory(next_node);  // Free all allocated memory
-                break;
-
-            default:
-                printf("Invalid input. Please try again.\n");
-        }
-    } while (choice != 2);
-
-
-
-
     FILE* fp=fopen("output.csv","r");
 
     if(!fp)
@@ -136,11 +104,35 @@ int main(){
             add_to_list(&next_node,username,email,password);
             }
         }fclose(fp);
-    Customer* temp = next_node;
-        while (temp != NULL) {
-            printf("Username: %s, Email: %s, Password: %s\n", temp->username, temp->email, temp->password);
-            temp = temp->next;
-        }return 0;}
+    
+    do {
+        // Display menu
+        f_string_format(1, "\033[1m==============\033[0m");
+        f_string_format(1, "\033[38;5;208m          TRIVAGO   \033[0m");
+        f_string_format(1, "\033[1m  ==============\033[0m\n");
+        f_string_format(0, "\033[33m 1. Register Yourself\033[0m");
+        f_string_format(0, "\033[33m 2. Exit\033[0m");
+        f_string_format(1, "\033[1m ==============================\033[0m\n");
+        printf("Enter your choice: ");
+   
+        scanf("%d", &choice);
+        getchar();
+        printf("\n"); // Clear newline character from input buffer
+
+        switch (choice) {
+            case 1:
+                registerYourself();
+                break;
+            case 2:
+                printf("Exiting registration page. Goodbye!\n");
+                SLEEP(4);
+                freeMemory(next_node);  // Free all allocated memory
+                break;
+
+            default:
+                printf("Invalid input. Please try again.\n");
+        }
+    } while (choice != 2);return 0;}
         
 void registerYourself(){
 
@@ -181,7 +173,7 @@ void registerYourself(){
 
     printf("Customer registered successfully!\n");
     SLEEP(4);
-    add_to_list(next_node, username, email, password);
+    add_to_list(&next_node, username, email, password);
 
    }
     
