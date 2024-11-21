@@ -1,14 +1,16 @@
 #include <stdio.h>
-#include <string.h>
 #include <stdlib.h>
+#include <string.h>
 #include <stdbool.h>
 
+// Define the structure for a linked list node
 typedef struct Customer{
     char username[51];
     char email[255];
     char password[31];
     struct Customer *next;
 }Customer;
+
 Customer* create_new_customer(char* username,char* email,char* password){
     Customer* new_customer=(Customer*)malloc(sizeof(Customer));
     strncpy(new_customer->username,username,50);
@@ -19,6 +21,7 @@ Customer* create_new_customer(char* username,char* email,char* password){
     new_customer->password[30]='\0';
     new_customer->next=NULL;
     return new_customer;}
+
 void add_to_list(Customer** head,char* username,char* email,char* password){
     Customer* new_customer=create_new_customer(username,email,password);
     if(*head==NULL){
@@ -31,7 +34,8 @@ void add_to_list(Customer** head,char* username,char* email,char* password){
         }
         temp->next=new_customer;}
 }
-bool usernameExists(struct Customer *current, char *username) {
+
+bool usernameExists(struct Customer *current, char username) {
     while (current != NULL) {
         if (strcmp(current->username, username) == 0) {  // Compare strings with strcmp
             return true;  // Username exists
@@ -41,19 +45,10 @@ bool usernameExists(struct Customer *current, char *username) {
     return false;
 }
 
-bool emailExists(struct Customer *current, char *email) {
-    while (current != NULL) {
-        if (strcmp(current->email, email) == 0) {  // Compare strings with strcmp
-            return true;  // Username exists
-        }
-        current = current->next;
-    }
-    return false;
-}
 
-int main(){
+int main() {
     Customer* next_node=NULL;
-    FILE* fp=fopen("output.csv","r");
+    FILE* fp=fopen("C:\Users\Jos samuel biju\OneDrive\Desktop\C-nergetic\Registration\output.csv","r");
 
     if(!fp)
         printf("File does not exist\n.");
@@ -87,7 +82,11 @@ int main(){
             printf("Username: %s, Email: %s, Password: %s\n", temp->username, temp->email, temp->password);
             temp = temp->next;
         }
-        char username[51], email[255], password[31];
+
+
+
+    //my code
+    char username[50], email[100], password[50];
 
     while (1) {
         printf("Enter a username: ");
@@ -100,17 +99,8 @@ int main(){
         }
     }
 
-    while (1) {
-        printf("Enter a email: ");
-        scanf("%s", email);  // It's safer to use fgets in real applications
-
-        if (emailExists(next_node,email)) {
-            printf("Email already exists. Please choose a different one.\n");
-        } else {
-            break;  // Username is valid, proceed to email
-        }
-    }
-
+    printf("Enter your email: ");
+    scanf("%s", email);
 
     printf("Enter your password: ");
     scanf("%s", password);  // Secure input handling recommended here too
@@ -119,15 +109,16 @@ int main(){
     printf("Customer registered successfully!\n");
     printf("Username: %s\n", username);
     printf("Email: %s\n", email);
-    printf("Password: %s\n", password);
+    printf("Password: %s\n", password);  // In a real application, don't print the password!
 
-    /*printf("%i",i);
-    FILE* fp1=fopen("/mnt/Users/Yashvi Mehta/OneDrive/Desktop/C-nergetic/Registration/output.csv","a+");*/
+    //create a new instance of the customer struct (darell)
 
+    //add the new struct to the end of the linked list (darell)
 
-    /*char string1[10];
-    scanf("%s",string1);
-    getchar();
-    printf("%s\n",string1);*/
+    // Free the allocated memory
+    // free(first);
+    // free(second);
+    // free(third);
+
     return 0;
 }
