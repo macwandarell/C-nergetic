@@ -1,5 +1,7 @@
 #include "../Code_Snippets/String_Alignment/f_string.h"
 #include <stdio.h>
+#define color "\t \033[1;38;2;0;100;0m"
+
 int main()
 {
     clear_console();
@@ -17,7 +19,7 @@ int main()
     f_string_format(1,"\t \033[1;38;255;255;255m<  Price for the Room:                >\033[0m");
     f_string_format(1,"\t \033[1;38;255;255;255m<  Price for the stay:                >\033[0m");
     f_string_format(1,"\t \033[1;38;255;255;255m<  Price for ext commodities:         >\033[0m");
-    f_string_format(1,"\t \033[1;38;2;0;100;0m<  Discount for you:                  >\033[0m");
+    f_string_format(1,color "<  Discount for you:                  >\033[0m");
     int a=21;
     f_string_format(1,"\t \033[1;38;2;255;255;0m<  Payment to be made: %d             >\033[0m",a);
     f_string_format(1,"\033[1;38;2;255;25500;255m    **********************************************\033[0m");
