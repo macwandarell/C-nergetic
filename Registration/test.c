@@ -139,18 +139,22 @@ void registerYourself(){
     char username[51], email[255], password[31];
     while (1) {
         printf("Enter a username: ");
-        scanf("%s", username);  // It's safer to use fgets in real applications
-
-        if (usernameExists(next_node,username)) {
-            printf("Username already exists. Please choose a different one.\n");
-        } else {
-            break;  // Username is valid, proceed to email
-        }
+        fgets(username,sizeof(username),stdin);
+        username[strcspn(username,"\n")]='\0';
+        if(strchr(username,' ')!=NULL){printf("Username cannot contain spaces.\n");continue;}
+        else{
+            
+            if (usernameExists(next_node,username)) {
+                printf("Username already exists. Please choose a different one.\n");
+            } else {
+                break;  // Username is valid, proceed to email
+            }}
     }
 
     while (1) {
         printf("Enter a email: ");
-        scanf("%s", email);  // It's safer to use fgets in real applications
+        fgets(email,sizeof(email),stdin);
+        email[strcspn(email,"\n")]='\0';
 
         if (emailExists(next_node,email)) {
             printf("Email already exists. Please choose a different one.\n");
@@ -161,7 +165,8 @@ void registerYourself(){
 
 
     printf("Enter your password: ");
-    scanf("%s", password);  // Secure input handling recommended here too
+    fgets(password,sizeof(password),stdin);
+    password[strcspn(password,"\n")]='\0';
     printf("\n");
     // Success message
 
