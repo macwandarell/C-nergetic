@@ -126,7 +126,11 @@ int main(){
             case 2:
                 printf("Exiting registration page. Goodbye!\n");
                 SLEEP(4);
-                freeMemory(next_node);  // Free all allocated memory
+                freeMemory(next_node);
+                clear_console();
+                system("./login");
+        
+                  // Free all allocated memory
                 break;
 
             default:
@@ -147,7 +151,7 @@ void registerYourself(){
             if (usernameExists(next_node,username)) {
                 printf("Username already exists. Please choose a different one.\n");
             } else {
-                break;  // Username is valid, proceed to email
+                break;
             }}
     }
 
@@ -159,7 +163,7 @@ void registerYourself(){
         if (emailExists(next_node,email)) {
             printf("Email already exists. Please choose a different one.\n");
         } else {
-            break;  // Username is valid, proceed to email
+            break;
         }
     }
 
@@ -175,9 +179,11 @@ void registerYourself(){
         printf("File does not exist\n.");
     else
     fprintf(fp1,"%s,%s,%s\n",username,email,password);
+    fflush(fp1);
 
     printf("Customer registered successfully!\n");
     SLEEP(4);
+    clear_console();
     add_to_list(&next_node, username, email, password);
 
    }
