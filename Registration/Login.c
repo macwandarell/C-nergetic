@@ -102,8 +102,7 @@ void login() {
 }
 
 int main() {
-    printf("Hello\n");
-    clear_console();
+    const char *filename = "data.csv";
     login();
     return 0;
 }
