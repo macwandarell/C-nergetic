@@ -44,6 +44,15 @@ void appendCustomer(Customer** head, const char* username, const char* email, co
     }
 }
 
+void print_UI() {
+    print_border("*");
+    f_string_format(1, "Welcome To The Login Page!");
+    char s[100];
+    date_d(s,sizeof(s));
+    f_string_format(2, "%s        ",s);
+    print_border("*");
+}
+
 void login() {
     FILE* fp = fopen("Registration/output.csv", "r");
     if (!fp) {
@@ -64,13 +73,13 @@ void login() {
         row++;
     }
     fclose(fp);
-
-    print_border("*");
-    f_string_format(1, "Welcome To The Login Page!");
-    char s[100];
-    date_d(s,sizeof(s));
-    f_string_format(2, "%s        ",s);
-    print_border("*"); 
+    print_UI();
+    // print_border("*");
+    // f_string_format(1, "Welcome To The Login Page!");
+    // char s[100];
+    // date_d(s,sizeof(s));
+    // f_string_format(2, "%s        ",s);
+    // print_border("*"); 
     
     int flag = 1;
     while (flag){
@@ -81,9 +90,8 @@ void login() {
         fgets(username, sizeof(username), stdin);
         username[strcspn(username, "\n")] = '\0';
         printf("Enter your password: ");
-        scanf("%s", password);
-        getchar();
-
+        fgets(password, sizeof(password), stdin);
+        password[strcspn(password, "\n")] = '\0';
         Customer* current = customerList;
         while (current != NULL) {
             if (strcmp(current->username, username) == 0 && strcmp(current->password, password) == 0) {
@@ -97,6 +105,8 @@ void login() {
         }
         if (flag) {
             f_string_format(1, "Invalid username or password. Please try again.");
+            clear_console();
+            print_UI();
         }
     }
 }
