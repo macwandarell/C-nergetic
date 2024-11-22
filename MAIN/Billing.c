@@ -91,13 +91,13 @@ int main()
     }
     
     printf("\n \n");
-    f_string_format(0,"\t\t\t\t\t\t\tCustomer Care :98989XXXXX");
+    f_string_format(0,"\t\t\t\t\t\t      Customer Care :98989XXXXX");
     printf("\n");
-    f_string_format(0,"\t\t\t\t\t\t\temail id :temp@gmail.com");
+    f_string_format(0,"\t\t\t\t\t\t      email id :temp@gmail.com");
     printf("\n");
-    f_string_format(0,"\t\t\t\t\t\t\tCompanyName | (C) ");
+    f_string_format(0,"\t\t\t\t\t\t      CompanyName | (C) ");
     
-     SLEEP(2);
+     SLEEP(5);
 
 
 
@@ -115,25 +115,25 @@ int main()
         f_string_format(2,"%s",arr);
         print_border("~");
         printf("\n");
-        f_string_format(1,"\t\033[1;38;2;0;200;0mRazroPay\033[0m\n");
+        f_string_format(1,"\t\033[1;38;2;0;200;0m         RazorPay\033[0m\n");
         print_border("-");
         print_border("-");
-        f_string_format(0," Choose the Payment Method :");
+        f_string_format(1," Choose the Payment Method :");
         printf("\n");
-        f_string_format(0," 1. Credit Card");
+        f_string_format(1," 1. Credit Card");
         printf("\n");
-        f_string_format(0," 2. Debit Card");
+        f_string_format(1," 2. Debit Card");
         printf("\n");
-        f_string_format(0," 3. Net Banking");
+        f_string_format(1," 3. Net Banking");
         printf("\n");
-        f_string_format(0," 4. UPI");
+        f_string_format(1," 4. UPI");
         printf("\n");
-        f_string_format(0," 5. Cash");
+        f_string_format(1," 5. Cash");
         printf("\n");
-        f_string_format(0," 6. Other");
+        f_string_format(1," 6. Other");
         printf("\n");
         printf("\n");
-        f_string_format(0," Enter the Payment Method :");
+        f_string_format(1," Enter the Payment Method :");
 
         int payment_method;
         scanf("%d",&payment_method);
@@ -143,120 +143,127 @@ int main()
         switch (payment_method)   
         {
         case 1:
-            f_string_format(0," Enter the Credit Card Number :");
+            f_string_format(1," Enter the Credit Card Number :");
+            scanf("%s",details);
+            
+            f_string_format(1," Enter the CVV :");
+            scanf("%s",details);
+            
+            f_string_format(1," Enter the Expiry Date :");
             scanf("%s",details);
             printf("\n");
-            f_string_format(0," Enter the CVV :");
-            scanf("%s",details);
-            printf("\n");
-            f_string_format(0," Enter the Expiry Date :");
-            scanf("%s",details);
-            printf("\n");
-            f_string_format(0," Confirm the Payment?(Y/N):");
+            
+            f_string_format(1," Confirm the Payment?(Y/N):");
             getchar();
             scanf("%c",&confirm_last_time_payment);
             getchar();
             printf("\n");
             
             if(confirm_last_time_payment=='Y' || confirm_last_time_payment=='y')
-               f_string_format(0,"\t Payment Successful");
+               f_string_format(1,"Payment Successful");
             else if (confirm_last_time_payment!='N' || confirm_last_time_payment=='n')
             {
-                f_string_format(0,"\t Payment Failed");
+                f_string_format(1,"Payment Failed");
             }
             else
-                f_string_format(0,"\t Invalid Input");
+                f_string_format(1,"Invalid Input");
             break;
         case 2:
-            f_string_format(0," Enter the Debit Card Number :");
+            f_string_format(1," Enter the Debit Card Number :");
             scanf("%s",details);
-            printf("\n");
-            f_string_format(0," Enter the CVV :");
+            
+            f_string_format(1," Enter the CVV :");
             scanf("%s",details);
-            printf("\n");
-            f_string_format(0," Enter the Expiry Date :");
+            
+            f_string_format(1," Enter the Expiry Date :");
             scanf("%s",details);
             printf("\n");
             
-            f_string_format(0," Confirm the Payment?(Y/N):");
+            
+            f_string_format(1," Confirm the Payment?(Y/N):");
             getchar();
             scanf("%c",&confirm_last_time_payment);
             getchar();
             printf("\n");
             
             if(confirm_last_time_payment=='Y' || confirm_last_time_payment=='y')
-               f_string_format(0,"\t Payment Successful");
+               f_string_format(1,"Payment Successful");
             else if (confirm_last_time_payment!='N' || confirm_last_time_payment=='n')
             {
-                f_string_format(0,"\t Payment Failed");
+                f_string_format(1,"Payment Failed");
             }
             else
-                f_string_format(0,"\t Invalid Input");
+                f_string_format(1,"Invalid Input");
             
                 
             break;
         case 3: 
-            f_string_format(0," Enter the Bank Name :");
+            f_string_format(1," Enter the Bank Name :");
+            scanf("%s",details);
+            
+            f_string_format(1," Enter the Account Number :");
+            scanf("%s",details);
+            
+            f_string_format(1," Enter the IFSC Code :");
             scanf("%s",details);
             printf("\n");
-            f_string_format(0," Enter the Account Number :");
-            scanf("%s",details);
-            printf("\n");
-            f_string_format(0," Enter the IFSC Code :");
-            scanf("%s",details);
-            printf("\n");
-            f_string_format(0," Confirm the Payment?(Y/N):");
+            
+            f_string_format(1," Confirm the Payment?(Y/N):");
             getchar();
             scanf("%c",&confirm_last_time_payment);
             getchar();
             printf("\n");
             
             if(confirm_last_time_payment=='Y' || confirm_last_time_payment=='y')
-               f_string_format(0,"\t Payment Successful");
+               f_string_format(1,"Payment Successful");
             else if (confirm_last_time_payment!='N' || confirm_last_time_payment=='n')
             {
-                f_string_format(0,"\t Payment Failed");
+                f_string_format(1,"Payment Failed");
             }
             else
-                f_string_format(0,"\t Invalid Input");
+                f_string_format(1,"Invalid Input");
             break;
         case 4:
-            f_string_format(0," Enter the UPI ID :");
-            f_string_format(0," Confirm the Payment?(Y/N):");
+            f_string_format(1," Enter the UPI ID :");
+            printf("\n");
+            f_string_format(1," Confirm the Payment?(Y/N):");
             getchar();
             scanf("%c",&confirm_last_time_payment);
             getchar();
             printf("\n");
             
             if(confirm_last_time_payment=='Y' || confirm_last_time_payment=='y')
-               f_string_format(0,"\t Payment Successful");
+               f_string_format(1,"Payment Successful");
             else if (confirm_last_time_payment!='N' || confirm_last_time_payment=='n')
             {
-                f_string_format(0,"\t Payment Failed");
+                f_string_format(1,"Payment Failed");
             }
             else
-                f_string_format(0,"\t Invalid Input");
+                f_string_format(1,"Invalid Input");
             break;
         
         case 5:
-            f_string_format(0," Confirm the Payment?(Y/N):");
+            f_string_format(1," Confirm the Payment?(Y/N):");
             scanf("%c",&confirm_last_time_payment);
             if(confirm_last_time_payment=='Y' || confirm_last_time_payment=='y')
-                f_string_format(0,"\t Payment will be done at the Hotel");
+                f_string_format(1,"Payment will be done at the Hotel");
             else if(confirm_last_time_payment=='N' || confirm_last_time_payment=='n')
-                f_string_format(0,"\t Payment Failed");
+                f_string_format(1,"Payment Failed");
             else
-                f_string_format(0,"\t Invalid Input");
+                f_string_format(1,"Invalid Input");
             break;
         case 6:
-            f_string_format(0," Enter the Payment Method :");
-            f_string_format(0," Enter the Details :");
-            f_string_format(0," This method will be done manually at the Hotel");
+            f_string_format(1," Enter the Payment Method :");
+            scanf("%s",details);
+            f_string_format(1," Enter the Details :");
+            scanf("%s",details);
+            f_string_format(1," This method will be done manually at the Hotel");
+
             
             break;
         
         default:
-            f_string_format(0,"\t Invalid Input");
+            f_string_format(1,"Invalid Input");
             break;
         }
 
@@ -271,11 +278,11 @@ int main()
         print_border("-");
         print_border("-");
         
-        f_string_format(0,"\t\t\t\t\t\t\t Customer Care :98989XXXXX");
+        f_string_format(1,"Customer Care :98989XXXXX");
         printf("\n");
-        f_string_format(0,"\t\t\t\t\t\t\t email id :temp@gmail.com");
+        f_string_format(1," email id :temp@gmail.com");
         printf("\n");
-        f_string_format(0,"\t\t\t\t\t\t\t CompanyName | (C) ");
+        f_string_format(1," CompanyName | (C) ");
         printf("\n");
 
 
