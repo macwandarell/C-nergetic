@@ -30,7 +30,7 @@ int main()
     print_border("*");
     
     printf("\n");
-    f_string_format(1,"\t\033[1;38;2;0;100;0mBilling Information\033[0m\n");
+    f_string_format(1,"\t\033[1;38;2;0;200;0mBilling Information\033[0m\n");
 
     print_border("-");
     print_border("-");
@@ -60,6 +60,7 @@ int main()
     printf("\n \n \n \n");
     f_string_format(1,"Customer Care :");
     f_string_format(1,"email id :");
-    f_string_format(1,"CompanyName\u00A9\n");
+    f_string_format(1,"CompanyName©");
+    
     }
 
