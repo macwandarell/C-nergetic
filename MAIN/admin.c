@@ -10,3 +10,11 @@
 #define SLEEP(seconds) sleep(seconds)
 #endif
 
+int main(void){
+    print_border("*");
+    f_string_format(1,"Welcome to the admin page");
+    char s[100];
+    date_d(s,sizeof(s));
+    f_string_format(2, "%s        ",s);
+    print_border("*");
+}

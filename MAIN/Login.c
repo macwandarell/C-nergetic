@@ -102,7 +102,6 @@ void login() {
 }
 
 int main() {
-    const char *filename = "data.csv";
     login();
     return 0;
 }
