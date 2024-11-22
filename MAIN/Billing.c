@@ -4,10 +4,20 @@
 #define cr_yellow "\t \033[1;38;2;255;255;0m"
 #define cr_w "\t \033[1;38;255;255;255m"
 #include <locale.h>
+#ifdef _WIN32
+#include <windows.h>
+#endif
+
 
 int main()
 {  
     setlocale(LC_ALL, "");
+
+    #ifdef _WIN32
+    // Set code page to UTF-8 for Windows console
+    SetConsoleOutputCP(CP_UTF8);
+    #endif
+
 
     clear_console();
     print_border("*");
