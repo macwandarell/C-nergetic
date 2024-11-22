@@ -24,25 +24,27 @@ int main()
 
     print_border("-");
     print_border("-");
-    f_string_format(1,"Price for the Room : 560");
-    f_string_format(1,"Price for the stay : 59696");
-    f_string_format(1,"Price for ext commodities : xtra emcekc");
-    f_string_format(1, "Discount for you : ckdmckdmc");
+    f_string_format(0,"\t\t\t\t\t\t Price for the Room :\t\t8756");
+    
+   
+    f_string_format(0,"\t\t\t\t\t\t Price for the stay :\t\t4343");
+    f_string_format(0,"\t\t\t\t\t\t Price for ext commodities :\tbed,pool");
+    f_string_format(0, "\t\t\t\t\t\t Discount for you :\t\t10");
     int a=21;
-    f_string_format(1,"Payment to be made : %d",a);
+    f_string_format(0,"\t\t\t\t\t\t Payment to be made :\t\t%d",a);
     
 
    
 
-    print_border("-");
+    print_border("-"); 
     
-    f_string_format(1,"Check out : cedce");
-    f_string_format(1,"Check In : cece");
-    f_string_format(1,"Hotel Name : cece");
-    f_string_format(1,"Location : cecec");
+    f_string_format(0,"\t\t\t\t\t\t   Check out :\t\t12/23/23");
+    f_string_format(0,"\t\t\t\t\t\t   Check In :\t\t12/13/23");
+    f_string_format(0,"\t\t\t\t\t\t   Hotel Name :\t\tTaj");
+    f_string_format(0,"\t\t\t\t\t\t   Location :\t\tMumbai");
     int b=265651;
-    f_string_format(1,"\t Booking Date : %d",b);
-    f_string_format(1,"Commodities : ");
+    f_string_format(0,"\t\t\t\t\t\t   Booking Date :\t%d",b);
+    f_string_format(0,"\t\t\t\t\t\t   Commodities :\tnoo");
     print_border("-");
 
     printf("\n \n \n \n");
@@ -50,3 +52,4 @@ int main()
     f_string_format(1,"email id :");
     f_string_format(1,"CompanyName\u00A9\n");
     }
+
