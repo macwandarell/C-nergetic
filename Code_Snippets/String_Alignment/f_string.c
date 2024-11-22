@@ -55,18 +55,18 @@ void f_string_format(int align, const char* format, ...) {
     if (align == 1) { // Center alignment
         int center_padding = padding / 2;
         if (center_padding > 0) {
-            printf("%*s%s\n", center_padding, "", buffer);
+            printf("%*s%s", center_padding, "", buffer);
         } else {
-            printf("%s\n", buffer); // If the string is too wide
+            printf("%s", buffer); // If the string is too wide
         }
     } else if (align == 2) { // Right alignment
         if (padding > 0) {
-            printf("%*s\n", width, buffer);
+            printf("%*s", width, buffer);
         } else {
-            printf("%s\n", buffer); // If the string is too wide
+            printf("%s", buffer); // If the string is too wide
         }
     } else { // Left alignment
-        printf("%s\n", buffer);
+        printf("%s", buffer);
     }
 }
 
