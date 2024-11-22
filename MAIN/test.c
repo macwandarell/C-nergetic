@@ -81,11 +81,8 @@ int main()
         printf("\n");
     }
     else if(confirm_payment=='N' || confirm_payment=='n')
-    {   f_string_format(1,"Are you sure? Please enter Y or N:");
-
-        getchar();
+    {   f_string_format(1,"Are you sure? Please enter Y or N");
         scanf("%c",&confirm_payment);
-        getchar();
         printf("\n");
         if(confirm_payment=='Y' || confirm_payment=='y')
         {    f_string_format(1,"We are loading you to the Payment Gateway...");
@@ -103,10 +100,8 @@ int main()
     }
     else
     {
-        f_string_format(1,"Are you sure? Please enter Y or N:");
-        getchar();
+        f_string_format(1,"Are you sure? Please enter Y or N");
         scanf("%c",&confirm_payment);
-        getchar();
         printf("\n");
         if(confirm_payment=='Y' || confirm_payment=='y')
         {    f_string_format(1,"We are loading you to the Payment Gateway...");
@@ -194,52 +189,13 @@ int main()
             
             if(confirm_last_time_payment=='Y' || confirm_last_time_payment=='y')
                f_string_format(1,"Payment Successful");
-            else if(confirm_payment=='N' || confirm_payment=='n')
-            {   
-                f_string_format(1,"Are you sure? Please enter Y or N:");
-                getchar();
+            else if (confirm_last_time_payment=='N' || confirm_last_time_payment=='n')
+            {
                 
-                
-                scanf("%c",&confirm_payment);
-                getchar();
-            
-                
-                printf("\n");
-                if(confirm_payment=='Y' || confirm_payment=='y')
-                {    f_string_format(1,"We are loading you to the Payment Gateway...");
-                printf("\n");
-                }
-                else if(confirm_payment=='N' || confirm_payment=='n')
-                {   f_string_format(1,"You declined the Payment");
-                    printf("\n");
-                }
-                else
-                {
-                    f_string_format(1,"Invalid Input");
-                printf("\n");
-                }
+                f_string_format(1,"Payment Failed");
             }
             else
-            {
-                f_string_format(1,"Are you sure? Please enter Y or N:");
-                getchar();
-                scanf("%c",&confirm_payment);
-                getchar();
-                printf("\n");
-                if(confirm_payment=='Y' || confirm_payment=='y')
-                {    f_string_format(1,"We are loading you to the Payment Gateway...");
-                printf("\n");
-                }
-                else if(confirm_payment=='N' || confirm_payment=='n')
-                {   f_string_format(1,"You declined the Payment");
-                    printf("\n");
-                }
-                else
-                {
-                    f_string_format(1,"Invalid Input");
-                printf("\n");
-                }
-            }
+                f_string_format(1,"Invalid Input");
             break;
         case 2:
             f_string_format(1," Enter the Debit Card Number :");
@@ -261,46 +217,13 @@ int main()
             
             if(confirm_last_time_payment=='Y' || confirm_last_time_payment=='y')
                f_string_format(1,"Payment Successful");
-            else if(confirm_payment=='N' || confirm_payment=='n')
-            {   f_string_format(1,"Are you sure? Please enter Y or N:");
-                getchar();
-                scanf("%c",&confirm_payment);
-                getchar();
-                printf("\n");
-                if(confirm_payment=='Y' || confirm_payment=='y')
-                {    f_string_format(1,"We are loading you to the Payment Gateway...");
-                printf("\n");
-                }
-                else if(confirm_payment=='N' || confirm_payment=='n')
-                {   f_string_format(1,"You declined the Payment");
-                    printf("\n");
-                }
-                else
-                {
-                    f_string_format(1,"Invalid Input");
-                printf("\n");
-                }
+            else if (confirm_last_time_payment=='N' || confirm_last_time_payment=='n')
+            {
+                f_string_format(1,"Payment Failed");
             }
             else
             {
-                f_string_format(1,"Are you sure? Please enter Y or N:");
-                getchar();
-                scanf("%c",&confirm_payment);
-                getchar();
-                printf("\n");
-                if(confirm_payment=='Y' || confirm_payment=='y')
-                {    f_string_format(1,"We are loading you to the Payment Gateway...");
-                printf("\n");
-                }
-                else if(confirm_payment=='N' || confirm_payment=='n')
-                {   f_string_format(1,"You declined the Payment");
-                    printf("\n");
-                }
-                else
-                {
-                    f_string_format(1,"Invalid Input");
-                printf("\n");
-                }
+                f_string_format(1,"Invalid Input");
             }
             
                 
@@ -324,47 +247,12 @@ int main()
             
             if(confirm_last_time_payment=='Y' || confirm_last_time_payment=='y')
                f_string_format(1,"Payment Successful");
-            else if(confirm_payment=='N' || confirm_payment=='n')
-            {   f_string_format(1,"Are you sure? Please enter Y or N:");
-                getchar();
-                scanf("%c",&confirm_payment);
-                getchar();
-                printf("\n");
-                if(confirm_payment=='Y' || confirm_payment=='y')
-                {    f_string_format(1,"We are loading you to the Payment Gateway...");
-                printf("\n");
-                }
-                else if(confirm_payment=='N' || confirm_payment=='n')
-                {   f_string_format(1,"You declined the Payment");
-                    printf("\n");
-                }
-                else
-                {
-                    f_string_format(1,"Invalid Input");
-                printf("\n");
-                }
+            else if (confirm_last_time_payment=='N' || confirm_last_time_payment=='n')
+            {
+                f_string_format(1,"Payment Failed");
             }
             else
-            {
-                f_string_format(1,"Are you sure? Please enter Y or N:");
-                getchar();
-                scanf("%c",&confirm_payment);
-                getchar();
-                printf("\n");
-                if(confirm_payment=='Y' || confirm_payment=='y')
-                {    f_string_format(1,"We are loading you to the Payment Gateway...");
-                printf("\n");
-                }
-                else if(confirm_payment=='N' || confirm_payment=='n')
-                {   f_string_format(1,"You declined the Payment");
-                    printf("\n");
-                }
-                else
-                {
-                    f_string_format(1,"Invalid Input");
-                printf("\n");
-                }
-            }
+                f_string_format(1,"Invalid Input");
             break;
         case 4:
             f_string_format(1," Enter the UPI ID :");
@@ -378,47 +266,12 @@ int main()
             
             if(confirm_last_time_payment=='Y' || confirm_last_time_payment=='y')
                f_string_format(1,"Payment Successful");
-            else if(confirm_payment=='N' || confirm_payment=='n')
-            {   f_string_format(1,"Are you sure? Please enter Y or N:");
-                getchar();
-                scanf("%c",&confirm_payment);
-                getchar();
-                printf("\n");
-                if(confirm_payment=='Y' || confirm_payment=='y')
-                {    f_string_format(1,"We are loading you to the Payment Gateway...");
-                printf("\n");
-                }
-                else if(confirm_payment=='N' || confirm_payment=='n')
-                {   f_string_format(1,"You declined the Payment");
-                    printf("\n");
-                }
-                else
-                {
-                    f_string_format(1,"Invalid Input");
-                printf("\n");
-                }
+            else if (confirm_last_time_payment=='N' || confirm_last_time_payment=='n')
+            {
+                f_string_format(1,"Payment Failed");
             }
             else
-            {
-                f_string_format(1,"Are you sure? Please enter Y or N:");
-                getchar();
-                scanf("%c",&confirm_payment);
-                getchar();
-                printf("\n");
-                if(confirm_payment=='Y' || confirm_payment=='y')
-                {    f_string_format(1,"We are loading you to the Payment Gateway...");
-                printf("\n");
-                }
-                else if(confirm_payment=='N' || confirm_payment=='n')
-                {   f_string_format(1,"You declined the Payment");
-                    printf("\n");
-                }
-                else
-                {
-                    f_string_format(1,"Invalid Input");
-                printf("\n");
-                }
-            }
+                f_string_format(1,"Invalid Input");
             break;
         
         case 5:
@@ -431,48 +284,10 @@ int main()
                 printf("\n");
                 f_string_format(1,"Payment will be done at the Hotel");
             }
-            else if(confirm_payment=='N' || confirm_payment=='n')
-            {   f_string_format(1,"Are you sure? Please enter Y or N:");
-                getchar();
-                scanf("%c",&confirm_payment);
-                getchar();
-                printf("\n");
-                if(confirm_payment=='Y' || confirm_payment=='y')
-                {    f_string_format(1,"We are loading you to the Payment Gateway...");
-                printf("\n");
-                }
-                else if(confirm_payment=='N' || confirm_payment=='n')
-                {   f_string_format(1,"You declined the Payment");
-                    printf("\n");
-                }
-                else
-                {
-                    f_string_format(1,"Invalid Input");
-                printf("\n");
-                }
-            }
+            else if(confirm_last_time_payment=='N' || confirm_last_time_payment=='n')
+                f_string_format(1,"Payment Failed");
             else
-            {
-                f_string_format(1,"Are you sure? Please enter Y or N:");
-                getchar();
-
-                scanf("%c",&confirm_payment);
-                getchar();
-                printf("\n");
-                if(confirm_payment=='Y' || confirm_payment=='y')
-                {    f_string_format(1,"We are loading you to the Payment Gateway...");
-                printf("\n");
-                }
-                else if(confirm_payment=='N' || confirm_payment=='n')
-                {   f_string_format(1,"You declined the Payment");
-                    printf("\n");
-                }
-                else
-                {
-                    f_string_format(1,"Invalid Input");
-                printf("\n");
-                }
-            }
+                f_string_format(1,"Invalid Input");
             break;
         
         
