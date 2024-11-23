@@ -167,7 +167,7 @@ void display_hotels_by_city(struct hotel *hotels, int num_hotels, int city_numbe
         case 8: display_hotels_by_city(hotels, row-1, 8); break;
         case 9: display_hotels_by_city(hotels, row-1, 9); break;
         case 10: display_hotels_by_city(hotels, row-1, 10); break;
-        case 11: printf("Exiting Hotel Page.Goodbye!\n");
+        case 11: printf("Exiting Hotel Page.Goodbye!👋\n");
         default: printf("Enter right number");break;
         
     }
