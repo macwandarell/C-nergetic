@@ -1,14 +1,7 @@
-#include "../Code_Snippets/String_Alignment/f_string.h"
+#include "f_string.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#ifdef _WIN32
-#include <windows.h>
-#define SLEEP(seconds) Sleep((seconds) * 1000)
-#else
-#include <unistd.h>
-#define SLEEP(seconds) sleep(seconds)
-#endif
 
 typedef struct Customer{
     char username[51];
@@ -52,7 +45,7 @@ void print_UI() {
 }
 
 void login() {
-    FILE* fp = fopen("Registration/output.csv", "r");
+    FILE* fp = fopen("userCredentials.csv", "r");
     if (!fp) {
     printf("File does not exist.\n");
     return;
@@ -101,7 +94,6 @@ void login() {
 }
 
 int main() {
-    printf("Hello\n");
     clear_console();
     login();
     return 0;

@@ -1,14 +1,14 @@
-#include "../Code_Snippets/String_Alignment/f_string.h"
+#include "f_string.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#ifdef _WIN32
-#include <windows.h>
-#define SLEEP(seconds) Sleep((seconds) * 1000)
-#else
-#include <unistd.h>
-#define SLEEP(seconds) sleep(seconds)
-#endif
+// #ifdef _WIN32
+// #include <windows.h>
+// #define SLEEP(seconds) Sleep((seconds) * 1000)
+// #else
+// #include <unistd.h>
+// #define SLEEP(seconds) sleep(seconds)
+// #endif
 
 typedef struct Hotel{
     int index;
@@ -33,8 +33,19 @@ void print_UI() {
     print_border("*");
 }
 
+void freeMemory(Hotel* head) {
+    Hotel* current = head;
+    Hotel* next;
+
+    while (current != NULL) {
+        next = current->next;
+        free(current);
+        current = next;
+    }
+}
+
 void writeHotelWithHeaders(Hotel* head) {
-    FILE* fp = fopen("User Main Page/hotel_list.csv", "w");
+    FILE* fp = fopen("hotelList.csv", "w");
     if (!fp) {
         printf("File does not exist.\n");
         return;
@@ -221,11 +232,12 @@ void updateHotel(Hotel* head, char* name, char *city){
 }
 
 int main(void){
+    clear_console();
     print_UI();
     int flag = 1;
     char username[51], password[31];
     
-    FILE* fp = fopen("User Main Page/hotel_list.csv", "r");
+    FILE* fp = fopen("hotelList.csv", "r");
     char buffer[1024];
     Hotel* hotelList = NULL;
     fgets(buffer, sizeof(buffer), fp);
@@ -305,6 +317,8 @@ int main(void){
             printf("\n");
             viewHotel(hotelList, name, city);
         }else if (option == 'E' || option == 'e') {
+            freeMemory(hotelList);
+            clear_console();
             return 0;
         }else{
             printf("Invalid option.\n");
