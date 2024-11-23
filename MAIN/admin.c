@@ -13,7 +13,7 @@
 typedef struct Hotel{
     int index;
     char name[100];
-    float city[100];
+    char city[100];
     int price_of_deluxe;
     int price_of_single;
     int price_of_superdeluxe;
@@ -23,6 +23,34 @@ typedef struct Hotel{
     char description[1000];
     struct Hotel *next;
 }Hotel;
+
+void print_UI() {
+    print_border("*");
+    f_string_format(1, "Welcome To The Admin Page!\n");
+    char s[100];
+    date_d(s,sizeof(s));
+    f_string_format(2, "%s        \n",s);
+    print_border("*");
+}
+
+void writeHotelWithHeaders(Hotel* head) {
+    FILE* fp = fopen("User Main Page/hotel_list.csv", "w");
+    if (!fp) {
+        printf("File does not exist.\n");
+        return;
+    }
+
+    // Write the headers
+    fprintf(fp, "index,hotel_name,city,deluxe_room_price,single_room_price,super_deluxe_price,luxury_price,rating,location,description\n");
+
+    Hotel* current = head;
+    while (current != NULL) {
+        fprintf(fp, "%d,%s,%s,%d,%d,%d,%d,%.2f,%s,%s\n", current->index, current->name, current->city, current->price_of_deluxe, current->price_of_single, current->price_of_superdeluxe, current->price_of_luxury, current->rating, current->address, current->description);
+        current = current->next;
+    }
+
+    fclose(fp);
+}
 
 Hotel* createHotel(int index, const char* name, char *city, int price_of_deluxe, int price_of_single, int price_of_superdeluxe, int price_of_luxury, float rating, const char* address, const char* description) {
     Hotel *newHotel = (Hotel*) malloc (sizeof(Hotel));
@@ -73,59 +101,32 @@ void addHotel(Hotel** head) {
     float rating;
     char name[100], address[500], description[1000],city[100];
 
-    printf("Enter city: ");
+    printf("Enter city                       : ");
     scanf("%99[^\n]", city);
+    getchar();
     int index = getNextIndex(*head, city);
-    printf("Generated index: %d\n", index);
-    printf("Enter name: ");
-    getchar();
+    printf("Enter name                       : ");
     scanf("%99[^\n]", name);
-    printf("Enter price of deluxe room: ");
+    printf("Enter price of deluxe room       : ");
     scanf("%d", &price_of_deluxe);
-    printf("Enter price of single room: ");
+    printf("Enter price of single room       : ");
     scanf("%d", &price_of_single);
-    printf("Enter price of super deluxe room: ");
+    printf("Enter price of super deluxe room : ");
     scanf("%d", &price_of_superdeluxe);
-    printf("Enter price of luxury room: ");
+    printf("Enter price of luxury room       : ");
     scanf("%d", &price_of_luxury);
-    printf("Enter rating: ");
+    printf("Enter rating                     : ");
     scanf("%f", &rating);
-    printf("Enter address: ");
     getchar();
+    printf("Enter address                    : ");
     scanf("%499[^\n]", address);
-    printf("Enter description: ");
     getchar();
+    printf("Enter description                : ");
     scanf("%999[^\n]", description);
+    getchar();
 
     appendHotel(head, index, name, city, price_of_deluxe, price_of_single, price_of_superdeluxe, price_of_luxury, rating, address, description);
-}
-
-void print_UI() {
-    print_border("*");
-    f_string_format(1, "Welcome To The Admin Page!\n");
-    char s[100];
-    date_d(s,sizeof(s));
-    f_string_format(2, "%s        \n",s);
-    print_border("*");
-}
-
-void writeHotelWithHeaders(Hotel* head) {
-    FILE* fp = fopen("hotels.csv", "w");
-    if (!fp) {
-        printf("File does not exist.\n");
-        return;
-    }
-
-    // Write the headers
-    fprintf(fp, "index,hotel_name,city,deluxe_room_price,single_room_price,super_deluxe_price,luxury_price,rating,location,description\n");
-
-    Hotel* current = head;
-    while (current != NULL) {
-        fprintf(fp, "%d,%s,%s,%d,%d,%d,%d,%.2f,%s,%s\n", current->index, current->name, current->city, current->price_of_deluxe, current->price_of_single, current->price_of_superdeluxe, current->price_of_luxury, current->rating, current->address, current->description);
-        current = current->next;
-    }
-
-    fclose(fp);
+    writeHotelWithHeaders(*head);
 }
 
 void deleteHotel(Hotel** head, char* name, char* city) {
@@ -158,25 +159,28 @@ void deleteHotel(Hotel** head, char* name, char* city) {
             }
             current = current->next;
         }
+    }else{
+        printf("\nHotel not found.\n");
+        return;
     }
 
     writeHotelWithHeaders(*head);
+    printf("\nHotel deleted successfully.\n");
 }
 
-void viewHotel(Hotel* head, char* name, char city){
+void viewHotel(Hotel* head, char* name, char *city){
     Hotel* current = head;
     while (current != NULL) {
         if (strcmp(current->name, name) == 0 && strcmp(current->city, city) == 0) {
-            printf("Index: %d\n", current->index);
-            printf("Name: %s\n", current->name);
-            printf("City: %s\n", current->city);
-            printf("Price of deluxe room: %d\n", current->price_of_deluxe);
-            printf("Price of single room: %d\n", current->price_of_single);
-            printf("Price of super deluxe room: %d\n", current->price_of_superdeluxe);
-            printf("Price of luxury room: %d\n", current->price_of_luxury);
-            printf("Rating: %.2f\n", current->rating);
-            printf("Address: %s\n", current->address);
-            printf("Description: %s\n", current->description);
+            printf("Name                       : %s\n", current->name);
+            printf("City                       : %s\n", current->city);
+            printf("Price of deluxe room       : %d\n", current->price_of_deluxe);
+            printf("Price of single room       : %d\n", current->price_of_single);
+            printf("Price of super deluxe room : %d\n", current->price_of_superdeluxe);
+            printf("Price of luxury room       : %d\n", current->price_of_luxury);
+            printf("Rating                     : %.2f\n", current->rating);
+            printf("Address                    : %s\n", current->address);
+            printf("Description                : %s\n", current->description);
             return;
         }
         current = current->next;
@@ -184,34 +188,36 @@ void viewHotel(Hotel* head, char* name, char city){
     printf("Hotel not found.\n");
 }
 
-void updateHotel(Hotel* head, char* name, char city){
+void updateHotel(Hotel* head, char* name, char *city){
     Hotel* current = head;
     while (current != NULL) {
         if (strcmp(current->name, name) == 0 && strcmp(current->city, city) == 0) {
-            printf("Enter new name: ");
+            printf("Enter new name                       : ");
             scanf("%99[^\n]", current->name);
-            printf("Enter new price of deluxe room: ");
+            printf("Enter new price of deluxe room       : ");
             scanf("%d", &current->price_of_deluxe);
-            printf("Enter new price of single room: ");
+            printf("Enter new price of single room       : ");
             scanf("%d", &current->price_of_single);
-            printf("Enter new price of super deluxe room: ");
+            printf("Enter new price of super deluxe room : ");
             scanf("%d", &current->price_of_superdeluxe);
-            printf("Enter new price of luxury room: ");
+            printf("Enter new price of luxury room       : ");
             scanf("%d", &current->price_of_luxury);
-            printf("Enter new rating: ");
+            printf("Enter new rating                     : ");
             scanf("%f", &current->rating);
-            printf("Enter new address: ");
             getchar();
+            printf("Enter new address                    : ");
             scanf("%499[^\n]", current->address);
-            printf("Enter new description: ");
             getchar();
+            printf("Enter new description                : ");
             scanf("%999[^\n]", current->description);
+            getchar();
             writeHotelWithHeaders(head);
+            printf("\nHotel updated successfully.\n");
             return;
         }
         current = current->next;
     }
-    printf("Hotel not found.\n");
+    printf("\nHotel not found.\n");
 }
 
 int main(void){
@@ -219,13 +225,14 @@ int main(void){
     int flag = 1;
     char username[51], password[31];
     
-    FILE* fp = fopen("hotel_list.csv", "r");
+    FILE* fp = fopen("User Main Page/hotel_list.csv", "r");
     char buffer[1024];
     Hotel* hotelList = NULL;
+    fgets(buffer, sizeof(buffer), fp);
     while(fgets(buffer, sizeof(buffer), fp)){
         int index = atoi(strtok(buffer, ","));
         char* name = strtok(NULL, ",");
-        char city = strtok(NULL, ",");
+        char *city = strtok(NULL, ",");
         int price_of_deluxe = atoi(strtok(NULL, ","));
         int price_of_single = atoi(strtok(NULL, ","));
         int price_of_superdeluxe = atoi(strtok(NULL, ","));
@@ -245,8 +252,10 @@ int main(void){
         scanf("%30[^\n]", password);
         getchar();
         if (strcmp(username,"admin")==0 && strcmp(password,"admin")==0){
-            f_string_format(1,"Welcome admin");
+            f_string_format(1,"Welcome Admin!");
             flag = 0;
+            SLEEP(3);
+            clear_console();
         }
         else{
             f_string_format(1,"Invalid credentials\n");
@@ -257,40 +266,51 @@ int main(void){
     }
 
     char option;
-    printf("\nAdd(A)/Delete(D)/Update(U)/View Hotel(V): ");
-    scanf(" %c", &option);
-
-    if (option == 'A') {
-        addHotel(&hotelList);
-    } else if (option == 'D') {
-        char name[100], city[100];
-        printf("Enter hotel name: ");
-        scanf("%99[^\n]", name);
-        printf("Enter city: ");
-        scanf("%99[^\n]", city);
-        deleteHotel(&hotelList, name, city);
-    } else if (option == 'U') {
-        char name[100], city[100];
-        printf("Enter hotel name: ");
-        scanf("%99[^\n]", name);
-        printf("Enter city: ");
-        scanf("%99[^\n]", city);
-        updateHotel(hotelList, name, city);
-    } else if (option == 'V') {
-        char name[100], city[100];
-        printf("Enter hotel name: ");
-        scanf("%99[^\n]", name);
-        printf("Enter city: ");
-        scanf("%99[^\n]", city);
-        viewHotel(hotelList, name, city);
+    while (1) {
+        print_UI();
+        printf("\nAdd Hotel(A)/Delete Hotel(D)/Update Hotel(U)/View Hotel(V)/Exit(E): ");
+        scanf(" %c", &option);
+        getchar();
+        printf("\n");
+        if (option == 'A' || option == 'a') {
+            addHotel(&hotelList);
+            printf("\nHotel added successfully.\n");
+        } else if (option == 'D' || option == 'd') {
+            char name[100], city[100];
+            printf("Enter hotel name: ");
+            scanf("%99[^\n]", name);
+            getchar();
+            printf("Enter city: ");
+            scanf("%99[^\n]", city);
+            getchar();
+            deleteHotel(&hotelList, name, city);
+        } else if (option == 'U' || option == 'u') {
+            char name[100], city[100];
+            printf("Enter hotel name: ");
+            scanf("%99[^\n]", name);
+            getchar();
+            printf("Enter city: ");
+            scanf("%99[^\n]", city);
+            getchar();
+            printf("\n");
+            updateHotel(hotelList, name, city);
+        } else if (option == 'V' || option == 'v') {
+            char name[100], city[100];
+            printf("Enter hotel name: ");
+            scanf("%99[^\n]", name);
+            getchar();
+            printf("Enter city: ");
+            scanf("%99[^\n]", city);
+            getchar();
+            printf("\n");
+            viewHotel(hotelList, name, city);
+        }else if (option == 'E' || option == 'e') {
+            return 0;
+        }else{
+            printf("Invalid option.\n");
+        }
+        printf("\nPress Enter to continue...");
+        getchar();
+        clear_console();
     }
-
-
-
-
-
-
-
-
-
 }

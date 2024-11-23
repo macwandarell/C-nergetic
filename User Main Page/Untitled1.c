@@ -16,10 +16,12 @@ struct hotel {
     char description[1001];
 };
 
-// Function to display hotels by city number
-void display_hotels_by_city(struct hotel *hotels, int num_hotels, int city_number) {
-    char *city_name;
+int num_hotels2;
+char *city_name;
 
+// Function to display hotels by city number
+void display_hotels_by_city(struct hotel *hotels,int num_hotels, int city_number) {
+    num_hotels2=num_hotels;
     // Determine the city name based on the city number
     switch (city_number) {
         case 1: city_name = "Mumbai"; break;
@@ -130,12 +132,25 @@ int main() {
 
         // Get a city number input from the user
         int city_number;
-        printf("\nEnter the city number to display hotels: ");
+        printf("\nEnter the index in city of the hotel you are choosing: ");
         scanf("%d", &city_number);
 
         // Display hotels for the chosen city number
         display_hotels_by_city(hotels, row - 1, city_number);
+
+    int city_index;
+    printf("\nEnter the city index: ");
+    scanf("%d",&city_index);
+    for (int i = 0; i < num_hotels2; i++) {
+        if (hotels[i].index_in_city==city_index && strcmp(hotels[i].city, city_name) == 0) {
+            FILE *fptr = fopen("customer_choice.csv", "a");
+            fprintf(fptr,"%s,%s,%d,%d,%d,%d,%s\n",hotels[i].name, hotels[i].city, hotels[i].price_of_single, hotels[i].price_of_deluxe,hotels[i].price_of_villa,hotels[i].price_of_luxury,hotels[i].address);
+            fclose(fptr);
+        }
     }
+
+    }
+
 
     return 0;
 }
