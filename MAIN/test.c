@@ -324,3 +324,51 @@ int main()
     return 0;
 }
 
+/*  NO 
+            f_string_format(1,"Are you sure? Please enter Y or N:");
+                getchar();
+                
+                
+                scanf("%c",&confirm_areusure_payment);
+                getchar();
+            
+                
+                printf("\n");
+                if(confirm_areusure_payment=='Y' || confirm_areusure_payment=='y')
+                {    f_string_format(1,"We are loading you to the Payment Gateway...");
+                printf("\n");
+                }
+                else if(confirm_areusure_payment=='N' || confirm_areusure_payment=='n')
+                {   f_string_format(1,"You declined the Payment");
+                    printf("\n");
+                }
+                else
+                {
+                    f_string_format(1,"Invalid Input");
+                printf("\n");
+                }
+
+
+
+            ELSE 
+
+                f_string_format(1,"Are you sure? Please enter Y or N:");
+                getchar();
+                scanf("%c",&confirm_areusure_payment);
+                getchar();
+                printf("\n");
+                if(confirm_areusure_payment=='Y' || confirm_areusure_payment=='y')
+                {    f_string_format(1,"We are loading you to the Payment Gateway...");
+                printf("\n");
+                }
+                else if(confirm_areusure_payment=='N' || confirm_areusure_payment=='n')
+                {   f_string_format(1,"You declined the Payment");
+                    printf("\n");
+                }
+                else
+                {
+                    f_string_format(1,"Invalid Input");
+                printf("\n");
+                }
+
+*/
