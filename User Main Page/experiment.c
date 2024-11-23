@@ -193,7 +193,7 @@ void display_hotels_by_city(struct hotel *hotels, int num_hotels, int city_numbe
     for (int i = 0; i < num_hotels2; i++) {
         if (hotels[i].index_in_city==city_index && strcmp(hotels[i].city, city_name) == 0) {
             FILE *fptr = fopen("customer_choice.csv", "w");
-            fprintf(fptr,"%s,%s,%d,%d,%d,%d,%s\n",hotels[i].name, hotels[i].city, hotels[i].price_of_single, hotels[i].price_of_deluxe,hotels[i].price_of_villa,hotels[i].price_of_luxury,hotels[i].address);
+            fprintf(fptr,"%i,%s,%s,%d,%d,%d,%d,%s\n",i,hotels[i].name, hotels[i].city, hotels[i].price_of_single, hotels[i].price_of_deluxe,hotels[i].price_of_villa,hotels[i].price_of_luxury,hotels[i].address);
             fclose(fptr);
             printf("You have selected : %s,%s\n",hotels[i].name,hotels[i].city);
         }
