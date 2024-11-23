@@ -26,12 +26,12 @@ void rating_to_stars(float rating) {
 
     // Print half star
     if (half_star) {
-        printf("\033[33m ✮ \033[0m");
+        printf("\033[38;2;150;113;23m ✮ \033[0m");
     }
 
     // Print empty stars
     for (int i = 0; i < empty_stars; i++) {
-        printf("☆ ");
+        printf("\033[33m ☆ \033[0m");
     }
 
     printf("\n");
