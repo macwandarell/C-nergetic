@@ -17,10 +17,10 @@ int main(){
     int nights;
     scanf("%i",&nights);
     getchar();
-    char date[8];
-    printf("From which date? (Please enter in dd/mm/yy format)");
-    fgets(date,sizeof(date),stdin);
-    date[strcspn(date,"\n")]='\0';
+    char date[10];
+    printf("From which date? (Please enter in dd/mm/yyyy format) ");
+    scanf("%s",date);
+    getchar();    
     printf("Select the room type:\n1 : Single Room\n2 : Deluxe Room\n3 : Super Deluxe\n4 : Luxury\n");
     int type_num;
     char type[15];
@@ -64,10 +64,13 @@ int main(){
         }
         printf("Minimum number of rooms needed are %d\n",r1);
         if(rooms<r1){
-            printf("Sorry you need to book %d more rooms to accomodate everyone.",r1-rooms);
+            printf("Sorry you need to book %d more rooms to accomodate everyone.\n",r1-rooms);
         }
-        else {printf("Congratulations, your rooms have been booked successfully!!!!");a=1;}}
-    clear_console();
+        else {printf("Congratulations, your rooms have been booked successfully!\n");a=1;}
+        }
+        SLEEP(4);
+            clear_console();
+
     char commodities[7];
     printf("Select extra commodities:(type 0 if you don't want or 1 if you want)\n");
     printf("Breakfast: ");

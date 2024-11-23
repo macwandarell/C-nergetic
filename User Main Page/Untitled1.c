@@ -17,12 +17,14 @@ struct hotel {
 };
 
 int num_hotels2;
+int num_hot_city=0;
 char *city_name;
 
 // Function to display hotels by city number
 void display_hotels_by_city(struct hotel *hotels,int num_hotels, int city_number) {
     num_hotels2=num_hotels;
-    // Determine the city name based on the city number
+    // Determine 
+    the city name based on the city number
     switch (city_number) {
         case 1: city_name = "Mumbai"; break;
         case 2: city_name = "Delhi"; break;
@@ -52,6 +54,7 @@ void display_hotels_by_city(struct hotel *hotels,int num_hotels, int city_number
             printf("Rating: %.1f\n", hotels[i].rating);
             printf("Address: %s\n", hotels[i].address);
             printf("Description: %s\n", hotels[i].description);
+            num_hot_city+=1;
         }
     }
 }
@@ -143,7 +146,7 @@ int main() {
     scanf("%d",&city_index);
     for (int i = 0; i < num_hotels2; i++) {
         if (hotels[i].index_in_city==city_index && strcmp(hotels[i].city, city_name) == 0) {
-            FILE *fptr = fopen("customer_choice.csv", "a");
+            FILE *fptr = fopen("customer_choice.csv", "w");
             fprintf(fptr,"%s,%s,%d,%d,%d,%d,%s\n",hotels[i].name, hotels[i].city, hotels[i].price_of_single, hotels[i].price_of_deluxe,hotels[i].price_of_villa,hotels[i].price_of_luxury,hotels[i].address);
             fclose(fptr);
         }

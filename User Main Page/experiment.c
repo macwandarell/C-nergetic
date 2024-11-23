@@ -18,22 +18,28 @@ struct hotel {
     char description[1001];
 };
 
-void display_hotels_by_city(struct hotel *hotels, int num_hotels, int city_number) {
-    char *city_name;
+int num_hot_city=0;
+int num_hotels2;
+char city_name[51]; 
+
+void display_hotels_by_city(struct hotel *hotels, int num_hotels, int city_number,char *city_name) {
+    num_hotels2=num_hotels;
+
 
     switch (city_number) {
-        case 1: city_name = "Mumbai"; break;
-        case 2: city_name = "Delhi"; break;
-        case 3: city_name = "Bangalore"; break;
-        case 4: city_name = "Kolkata"; break;
-        case 5: city_name = "Chennai"; break;
-        case 6: city_name = "Udaipur"; break;
-        case 7: city_name = "Ahmedabad"; break;
-        case 8: city_name = "Goa"; break;
-        case 9: city_name = "Manali"; break;
-        case 10: city_name = "Hyderabad"; break;
-        default: printf("Invalid city number.\n"); return;
-    }
+    case 1: strncpy(city_name, "Mumbai", 50); break;
+    case 2: strncpy(city_name, "Delhi", 50); break;
+    case 3: strncpy(city_name, "Bangalore", 50); break;
+    case 4: strncpy(city_name, "Kolkata", 50); break;
+    case 5: strncpy(city_name, "Chennai", 50); break;
+    case 6: strncpy(city_name, "Udaipur", 50); break;
+    case 7: strncpy(city_name, "Ahmedabad", 50); break;
+    case 8: strncpy(city_name, "Goa", 50); break;
+    case 9: strncpy(city_name, "Manali", 50); break;
+    case 10: strncpy(city_name, "Hyderabad", 50); break;
+    default: printf("Invalid city number.\n"); return;
+}
+
 
      printf("\nHotels in %s (City Number: %d):\n", city_name, city_number);
     for (int i = 0; i < num_hotels; i++) {
@@ -49,6 +55,8 @@ void display_hotels_by_city(struct hotel *hotels, int num_hotels, int city_numbe
             printf("Rating: ");rating_to_stars(hotels[i].rating);
             printf("Address: %s\n", hotels[i].address);
             printf("Description: %s\n", hotels[i].description);
+            num_hot_city+=1;
+
         }
     }
 }
@@ -56,7 +64,6 @@ void display_hotels_by_city(struct hotel *hotels, int num_hotels, int city_numbe
 
  int main(){
     int city_number;
-    char *city_name;
     struct hotel hotels[100];
 
     FILE *fp = fopen("hotel_list.csv", "r");
@@ -132,6 +139,8 @@ void display_hotels_by_city(struct hotel *hotels, int num_hotels, int city_numbe
 
         fclose(fp);
 
+        
+
 
         // Display menu
         f_string_format(1, "\033[1m==============\033[0m");
@@ -147,7 +156,7 @@ void display_hotels_by_city(struct hotel *hotels, int num_hotels, int city_numbe
         f_string_format(0, "\033[33m 7. Ahmedabad\033[0m");
         f_string_format(0, "\033[33m 8. Goa\033[0m");
         f_string_format(0, "\033[33m 9. Manali\033[0m");
-        f_string_format(0, "\033[33m 10. Hydrabad\033[0m");
+        f_string_format(0, "\033[33m 10. Hyderabad\033[0m");
         f_string_format(0, "\033[33m 11. Exit\033[0m");
         f_string_format(1, "\033[1m ==============================\033[0m\n");
         printf("Enter your choice of city by selecting the index number: ");
@@ -157,19 +166,36 @@ void display_hotels_by_city(struct hotel *hotels, int num_hotels, int city_numbe
         printf("\n"); // Clear newline character from input buffer
 
         switch (city_number) {
-        case 1: display_hotels_by_city(hotels, row-1, 1); break;
-        case 2: display_hotels_by_city(hotels, row-1, 2); break;
-        case 3: display_hotels_by_city(hotels, row-1, 3); break;
-        case 4: display_hotels_by_city(hotels, row-1, 4); break;
-        case 5: display_hotels_by_city(hotels, row-1, 5); break;
-        case 6: display_hotels_by_city(hotels, row-1, 6); break;
-        case 7: display_hotels_by_city(hotels, row-1, 7); break;
-        case 8: display_hotels_by_city(hotels, row-1, 8); break;
-        case 9: display_hotels_by_city(hotels, row-1, 9); break;
-        case 10: display_hotels_by_city(hotels, row-1, 10); break;
-        case 11: printf("Exiting Hotel Page.Goodbye!👋\n");
-        default: printf("Enter right number");break;
+        case 1: display_hotels_by_city(hotels, row-1, 1,city_name); break;
+        case 2: display_hotels_by_city(hotels, row-1, 2,city_name); break;
+        case 3: display_hotels_by_city(hotels, row-1, 3,city_name); break;
+        case 4: display_hotels_by_city(hotels, row-1, 4,city_name); break;
+        case 5: display_hotels_by_city(hotels, row-1, 5,city_name); break;
+        case 6: display_hotels_by_city(hotels, row-1, 6,city_name); break;
+        case 7: display_hotels_by_city(hotels, row-1, 7,city_name); break;
+        case 8: display_hotels_by_city(hotels, row-1, 8,city_name); break;
+        case 9: display_hotels_by_city(hotels, row-1, 9,city_name); break;
+        case 10: display_hotels_by_city(hotels, row-1, 10,city_name); break;
+        case 11: printf("Exiting Hotel Page.Goodbye!👋\n");system("./login");break;
+        default: printf("Enter right number.\n");break;
         
     }
         }
+    int i=0;
+    int city_index;
+    while(!i){
+    printf("Enter the city index: ");
+    scanf("%d",&city_index);
+    getchar();
+    printf("%i",num_hotels2);
+    if(city_index>num_hot_city){printf("Enter a valid hotel index\n");}
+    else{i=1;}}
+    for (int i = 0; i < num_hotels2; i++) {
+        if (hotels[i].index_in_city==city_index && strcmp(hotels[i].city, city_name) == 0) {
+            FILE *fptr = fopen("customer_choice.csv", "w");
+            fprintf(fptr,"%s,%s,%d,%d,%d,%d,%s\n",hotels[i].name, hotels[i].city, hotels[i].price_of_single, hotels[i].price_of_deluxe,hotels[i].price_of_villa,hotels[i].price_of_luxury,hotels[i].address);
+            fclose(fptr);
+            printf("You have selected : %s,%s\n",hotels[i].name,hotels[i].city);
+        }
+    }
 }
