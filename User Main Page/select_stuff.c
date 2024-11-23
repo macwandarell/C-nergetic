@@ -18,7 +18,7 @@ int main(){
     scanf("%i",&nights);
     getchar();
     char date[8];
-    printf("From which date? ");
+    printf("From which date? (Please enter in dd/mm/yy format)");
     fgets(date,sizeof(date),stdin);
     date[strcspn(date,"\n")]='\0';
     printf("Select the room type:\n1 : Single Room\n2 : Deluxe Room\n3 : Super Deluxe\n4 : Luxury\n");
@@ -47,24 +47,24 @@ int main(){
         scanf("%d",&rooms);
         getchar();
         int r1 =0;
-        if(a%2==0){
-            r1+=a/2;
-            if(k>r1){
-                if((k-r1)%3==0) r1+=(k-r1)/3;
-                else r1+=(k-r1)/3 + 1;
+        if(adults%2==0){
+            r1+=adults/2;
+            if(kids>r1){
+                if((kids-r1)%3==0) r1+=(kids-r1)/3;
+                else r1+=(kids-r1)/3 + 1;
             }
         }
         else{
-            r1+=a/2 + 1;
-            if(k>r1){
-                if((k-r1-1)%3==0){
-                    r1+=(k-r1-1)/3;}
-                else r1+=(k-r1-1)/3 + 1;
+            r1+=adults/2 + 1;
+            if(kids>r1){
+                if((kids-r1-1)%3==0){
+                    r1+=(kids-r1-1)/3;}
+                else r1+=(kids-r1-1)/3 + 1;
             }
         }
         printf("Minimum number of rooms needed are %d\n",r1);
-        if(r<r1){
-            printf("Sorry you need to book %d more rooms to accomodate everyone.",r1-r);
+        if(rooms<r1){
+            printf("Sorry you need to book %d more rooms to accomodate everyone.",r1-rooms);
         }
         else {printf("Congratulations, your rooms have been booked successfully!!!!");a=1;}}
     clear_console();
@@ -94,7 +94,7 @@ int main(){
     fprintf(f1,"%i,%i,%s,%s,%i,%i,%s",nights,rooms,type,date,adults,kids,commodities);
     fclose(f1);
     return 0;
-    
+
 }
    // FILE 1(for hotel):
    // name,city,price_of_single,price_of_deluxe,price_of_super_deluxe,price_of_luxury,address.
