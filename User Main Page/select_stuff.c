@@ -24,6 +24,7 @@ struct hotel {
     char description[1001];
 };
 int main(){
+    clear_console();
     FILE *f1=fopen("details.csv","w");
     FILE *f2=fopen("customer_choice.csv","r");
     int index;
@@ -132,6 +133,7 @@ int main(){
             else if(type_num==3){strncpy(type,"Villa",sizeof(type));price=hotels[i].price_of_villa;i=1;}
             else if(type_num==4){strncpy(type,"Luxury",sizeof(type));price=hotels[i].price_of_luxury;i=1;}
             else{printf("Type correct number.\n");}}
+
         int adults,kids,rooms;
         int a=0;
         while(!a){
@@ -160,8 +162,9 @@ int main(){
                     else r1+=(kids-r1-1)/3 + 1;
                 }
             }
-            printf("Minimum number of rooms needed are %d\n",r1);
+            
             if(rooms<r1){
+                printf("Minimum number of rooms needed are %d\n",r1);
                 printf("Sorry you need to book %d more rooms to accomodate everyone.\n",r1-rooms);
             }
             else {printf("Congratulations, your rooms have been booked successfully!\n");a=1;}
@@ -196,6 +199,7 @@ int main(){
         scanf("%c",&commodities[6]);
         getchar();
         fprintf(f1,"%i,%i,%s,%i,%s,%i,%i,%s",nights,rooms,type,price,date,adults,kids,commodities);
+        fflush(f1);
         fclose(f1);
         return 0;
         

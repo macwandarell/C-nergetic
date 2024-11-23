@@ -3,6 +3,13 @@
 #include "rating.h"
 #include <stdlib.h>// for atoi, atof
 #include <string.h>
+#ifdef _WIN32
+#include <windows.h>
+#define SLEEP(seconds) Sleep((seconds) * 1000)
+#else
+#include <unistd.h>
+#define SLEEP(seconds) sleep(seconds)
+#endif
 
 // Define the hotel structure
 struct hotel {
@@ -184,18 +191,20 @@ void display_hotels_by_city(struct hotel *hotels, int num_hotels, int city_numbe
     int i=0;
     int city_index;
     while(!i){
-    printf("Enter the city index: ");
+    printf("Enter the hotel index: ");
     scanf("%d",&city_index);
     getchar();
-    printf("%i",num_hotels2);
     if(city_index>num_hot_city){printf("Enter a valid hotel index\n");}
     else{i=1;}}
     for (int i = 0; i < num_hotels2; i++) {
         if (hotels[i].index_in_city==city_index && strcmp(hotels[i].city, city_name) == 0) {
             FILE *fptr = fopen("customer_choice.csv", "w");
             fprintf(fptr,"%i,%s,%s,%d,%d,%d,%d,%s\n",i,hotels[i].name, hotels[i].city, hotels[i].price_of_single, hotels[i].price_of_deluxe,hotels[i].price_of_villa,hotels[i].price_of_luxury,hotels[i].address);
+            fflush(fptr);
             fclose(fptr);
             printf("You have selected : %s,%s\n",hotels[i].name,hotels[i].city);
+            SLEEP(4);
+            system("./select_stuff");
         }
     }
 }
