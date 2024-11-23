@@ -1,4 +1,4 @@
-index,hotel_name,city,deluxe_room_price,single_room_price,super_deluxe_price,luxury_price,rating,location,description
+index,hotel_name,city,deluxe_room_price,single_room_price,villa_price,luxury_price,rating,location,description
 1,The Oberoi Mumbai,Mumbai,25000,18000,55000,35000,5.0,Apollo Bunder 400001,Known for its luxurious service and ocean views.
 2,The Taj Mahal Palace,Mumbai,24500,17000,50000,36000,4.5,Apollo Bunder,A historic landmark offering opulent accommodations.
 3,Trident Hotel,Mumbai,24750,17500,50000,34000,4.0,Nariman Point,Offers a stunning view of Marine Drive with excellent amenities.

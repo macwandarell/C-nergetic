@@ -109,7 +109,7 @@ int main(){
         // Display menu
         f_string_format(1, "\033[1m==============\033[0m\n");
         f_string_format(1, "\033[38;5;208m          RoomLeloBhai.com   \033[0m\n");
-        f_string_format(1, "\033[1m  ==============\033[0m\n\n");
+        f_string_format(1, "\033[1m ==============\033[0m\n\n");
         f_string_format(0, "\033[33m 1. Register Yourself\033[0m\n");
         f_string_format(0, "\033[33m 2. Exit\033[0m\n");
         f_string_format(1, "\033[1m ==============================\033[0m\n\n");

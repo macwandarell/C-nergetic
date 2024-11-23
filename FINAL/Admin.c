@@ -16,7 +16,7 @@ typedef struct Hotel{
     char city[100];
     int price_of_deluxe;
     int price_of_single;
-    int price_of_superdeluxe;
+    int price_of_villa;
     int price_of_luxury;
     float rating;
     char address[500];
@@ -52,18 +52,18 @@ void writeHotelWithHeaders(Hotel* head) {
     }
 
     // Write the headers
-    fprintf(fp, "index,hotel_name,city,deluxe_room_price,single_room_price,super_deluxe_price,luxury_price,rating,location,description\n");
+    fprintf(fp, "index,hotel_name,city,deluxe_room_price,single_room_price,villa_price,luxury_price,rating,location,description\n");
 
     Hotel* current = head;
     while (current != NULL) {
-        fprintf(fp, "%d,%s,%s,%d,%d,%d,%d,%.2f,%s,%s\n", current->index, current->name, current->city, current->price_of_deluxe, current->price_of_single, current->price_of_superdeluxe, current->price_of_luxury, current->rating, current->address, current->description);
+        fprintf(fp, "%d,%s,%s,%d,%d,%d,%d,%.2f,%s,%s\n", current->index, current->name, current->city, current->price_of_deluxe, current->price_of_single, current->price_of_villa, current->price_of_luxury, current->rating, current->address, current->description);
         current = current->next;
     }
 
     fclose(fp);
 }
 
-Hotel* createHotel(int index, const char* name, char *city, int price_of_deluxe, int price_of_single, int price_of_superdeluxe, int price_of_luxury, float rating, const char* address, const char* description) {
+Hotel* createHotel(int index, const char* name, char *city, int price_of_deluxe, int price_of_single, int price_of_villa, int price_of_luxury, float rating, const char* address, const char* description) {
     Hotel *newHotel = (Hotel*) malloc (sizeof(Hotel));
 
     newHotel->index = index;
@@ -71,7 +71,7 @@ Hotel* createHotel(int index, const char* name, char *city, int price_of_deluxe,
     strcpy(newHotel->city, city);
     newHotel->price_of_deluxe = price_of_deluxe;
     newHotel->price_of_single = price_of_single;
-    newHotel->price_of_superdeluxe = price_of_superdeluxe;
+    newHotel->price_of_villa = price_of_villa;
     newHotel->price_of_luxury = price_of_luxury;
     newHotel->rating = rating;
     strcpy(newHotel->address, address);
@@ -81,8 +81,8 @@ Hotel* createHotel(int index, const char* name, char *city, int price_of_deluxe,
     return newHotel;
 }
 
-void appendHotel(Hotel** head, int index, const char* name, char *city, int price_of_deluxe, int price_of_single, int price_of_superdeluxe, int price_of_luxury, float rating, const char* address, const char* description) {
-    Hotel* newHotel = createHotel(index, name, city, price_of_deluxe, price_of_single, price_of_superdeluxe, price_of_luxury, rating, address, description);
+void appendHotel(Hotel** head, int index, const char* name, char *city, int price_of_deluxe, int price_of_single, int price_of_villa, int price_of_luxury, float rating, const char* address, const char* description) {
+    Hotel* newHotel = createHotel(index, name, city, price_of_deluxe, price_of_single, price_of_villa, price_of_luxury, rating, address, description);
 
     if (*head == NULL) {
         *head = newHotel;
@@ -108,7 +108,7 @@ int getNextIndex(Hotel* head, char *city) {
 }
 
 void addHotel(Hotel** head) {
-    int  price_of_deluxe, price_of_single, price_of_superdeluxe, price_of_luxury;
+    int  price_of_deluxe, price_of_single, price_of_villa, price_of_luxury;
     float rating;
     char name[100], address[500], description[1000],city[100];
 
@@ -122,8 +122,8 @@ void addHotel(Hotel** head) {
     scanf("%d", &price_of_deluxe);
     printf("Enter price of single room       : ");
     scanf("%d", &price_of_single);
-    printf("Enter price of super deluxe room : ");
-    scanf("%d", &price_of_superdeluxe);
+    printf("Enter price of villa room : ");
+    scanf("%d", &price_of_villa);
     printf("Enter price of luxury room       : ");
     scanf("%d", &price_of_luxury);
     printf("Enter rating                     : ");
@@ -136,7 +136,7 @@ void addHotel(Hotel** head) {
     scanf("%999[^\n]", description);
     getchar();
 
-    appendHotel(head, index, name, city, price_of_deluxe, price_of_single, price_of_superdeluxe, price_of_luxury, rating, address, description);
+    appendHotel(head, index, name, city, price_of_deluxe, price_of_single, price_of_villa, price_of_luxury, rating, address, description);
     writeHotelWithHeaders(*head);
 }
 
@@ -187,7 +187,7 @@ void viewHotel(Hotel* head, char* name, char *city){
             printf("City                       : %s\n", current->city);
             printf("Price of deluxe room       : %d\n", current->price_of_deluxe);
             printf("Price of single room       : %d\n", current->price_of_single);
-            printf("Price of super deluxe room : %d\n", current->price_of_superdeluxe);
+            printf("Price of villa room : %d\n", current->price_of_villa);
             printf("Price of luxury room       : %d\n", current->price_of_luxury);
             printf("Rating                     : %.2f\n", current->rating);
             printf("Address                    : %s\n", current->address);
@@ -209,8 +209,8 @@ void updateHotel(Hotel* head, char* name, char *city){
             scanf("%d", &current->price_of_deluxe);
             printf("Enter new price of single room       : ");
             scanf("%d", &current->price_of_single);
-            printf("Enter new price of super deluxe room : ");
-            scanf("%d", &current->price_of_superdeluxe);
+            printf("Enter new price of villa room : ");
+            scanf("%d", &current->price_of_villa);
             printf("Enter new price of luxury room       : ");
             scanf("%d", &current->price_of_luxury);
             printf("Enter new rating                     : ");
@@ -247,13 +247,13 @@ int main(void){
         char *city = strtok(NULL, ",");
         int price_of_deluxe = atoi(strtok(NULL, ","));
         int price_of_single = atoi(strtok(NULL, ","));
-        int price_of_superdeluxe = atoi(strtok(NULL, ","));
+        int price_of_villa = atoi(strtok(NULL, ","));
         int price_of_luxury = atoi(strtok(NULL, ","));
         float rating = atof(strtok(NULL, ","));
         char* address = strtok(NULL, ",");
         char* description = strtok(NULL, ",");
         description[strcspn(description, "\n")] = '\0'; // Remove trailing newline
-        appendHotel(&hotelList, index, name, city, price_of_deluxe, price_of_single, price_of_superdeluxe, price_of_luxury, rating, address, description); // Add to the linked list
+        appendHotel(&hotelList, index, name, city, price_of_deluxe, price_of_single, price_of_villa, price_of_luxury, rating, address, description); // Add to the linked list
     }
 
     while (flag){
