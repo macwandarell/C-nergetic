@@ -1,15 +1,15 @@
-#include <stdio.h>
+    #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
 #include "f_string.h"
 #include <stdbool.h>
-#ifdef _WIN32
-#include <windows.h>
-#define SLEEP(seconds) Sleep((seconds) * 1000)
-#else
-#include <unistd.h>
-#define SLEEP(seconds) sleep(seconds)
-#endif
+// #ifdef _WIN32
+// #include <windows.h>
+// #define SLEEP(seconds) Sleep((seconds) * 1000)
+// #else
+// #include <unistd.h>
+// #define SLEEP(seconds) sleep(seconds)
+// #endif
 
 
 
@@ -76,7 +76,7 @@ int main(){
     clear_console();
          int choice;
 
-    FILE* fp=fopen("output.csv","r");
+    FILE* fp=fopen("userCredentials.csv","r");
 
     if(!fp)
         printf("File does not exist\n.");
@@ -107,12 +107,12 @@ int main(){
     
     do {
         // Display menu
-        f_string_format(1, "\033[1m==============\033[0m");
-        f_string_format(1, "\033[38;5;208m          TRIVAGO   \033[0m");
-        f_string_format(1, "\033[1m  ==============\033[0m\n");
-        f_string_format(0, "\033[33m 1. Register Yourself\033[0m");
-        f_string_format(0, "\033[33m 2. Exit\033[0m");
-        f_string_format(1, "\033[1m ==============================\033[0m\n");
+        f_string_format(1, "\033[1m==============\033[0m\n");
+        f_string_format(1, "\033[38;5;208m          RoomLeloBhai.com   \033[0m\n");
+        f_string_format(1, "\033[1m ==============\033[0m\n\n");
+        f_string_format(0, "\033[33m 1. Register Yourself\033[0m\n");
+        f_string_format(0, "\033[33m 2. Exit\033[0m\n");
+        f_string_format(1, "\033[1m ==============================\033[0m\n\n");
         printf("Enter your choice: ");
    
         scanf("%d", &choice);
@@ -128,7 +128,6 @@ int main(){
                 SLEEP(4);
                 freeMemory(next_node);
                 clear_console();
-                system("./login");
         
                   // Free all allocated memory
                 break;
@@ -174,7 +173,7 @@ void registerYourself(){
     printf("\n");
     // Success message
 
-    FILE* fp1=fopen("output.csv","a");
+    FILE* fp1=fopen("userCredentials.csv","a");
     if(!fp1)
         printf("File does not exist\n.");
     else
