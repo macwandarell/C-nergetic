@@ -6,15 +6,22 @@
 #define cr_yellow "\t \033[1;38;2;255;255;0m"
 #define cr_w "\t \033[1;38;255;255;255m"
 // #include <locale.h>
-// #ifdef _WIN32
-// #include <windows.h>
+#ifdef _WIN32
+#include <windows.h>
 #define SLEEP(seconds) Sleep((seconds) * 1000)
-// #else
+#else
 #include <unistd.h>
 #define SLEEP(seconds) sleep(seconds)
-// #endif
+#endif
 
-#define MAX_LINE_LENGTH 1024
+#include <time.h>
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+
+
+
 
 int confirm_payment_fun()
 {   
@@ -118,6 +125,10 @@ void footer()
     f_string_format(1,"CompanyName | (C) ");
 }
 
+
+// Main Function
+
+
 int main()
 {  
     // setlocale(LC_ALL, "");
@@ -133,55 +144,146 @@ int main()
     header("Billing Information");
 
 
-    FILE *fhotel = NULL;
-    fhotel = fopen("details.csv","r");
 
-    // Prices for the commmodities
-    // Extra bed = Rs. 5000
-    // Spa = 5000
-    // Dinning = 2000
-    // Pick-Up Services = 1000
-    // Pets Room = 10000
-    // None = 0
+    FILE *fchoice;
+    fchoice = fopen("customer_choice.csv","r");
 
-    char line[MAX_LINE_LENGTH];
+
+    char line[1000];
+    
+
+    // I HAVE TO IMPORT DATA FROM ANOTHER FOLDER NAMED "User Main Page" FILE NAME IS EXPERIMENTAL.C
+    // AND I WANT THE PRICE AND ALL FROM THE FILE NAMED "details.csv" 
+    //SO WRITE ME A CODE FOR THAT
+    // I HAVE TO PRINT THE DETAILS OF THE HOTEL AND THE CUSTOMER DETAILS
+    // I HAVE TO PRINT THE TOTAL AMOUNT TO BE PAID
+    // I HAVE TO PRINT THE PAYMENT METHOD
+    
+    //code for reading data form the details.csv file
+    
+
+    char line1[1000];
+    int nights;
+    int rooms;
+    char type[50];
+    int price_per_room;
+    int adults;
+    int kids;
+    char commodities[8];
+
+
+    // we defined this for our purpose
+    int commodities_price[7]={2000,3000,3000,5000,5000,2000,10000};
+    char commodities_details[7][50]={"Breakfast","Lunch","Dinner","Extra Bed","Spa","Pick-up Service","Pet-rooms"};
+
+
+
+    
+
+    //code for reading data form the customer_choice.csv
+    int index;
     char hotel_name[50];
     char city[50];
-    char location[150];
+    int price_single;
+    int price_deluxe;
+    int price_villa;
+    int price_luxury;
+    char address[150];
+    FILE *fdetails=fopen("details.csv","r");
+    
+
+    char check_indate[50];
+    if (fgets(line1, 1000, fdetails) != NULL)
+    {
+        
+        nights = atoi(strtok(line1, ","));
+        rooms = atoi(strtok(NULL, ","));
+        strcpy(type, strtok(NULL, ","));
+        price_per_room = atoi(strtok(NULL, ","));
+        strcpy(check_indate, strtok(NULL, ","));
+        adults = atoi(strtok(NULL, ","));
+        kids = atoi(strtok(NULL, ","));
+        strcpy(commodities, strtok(NULL, ","));
+    }
+  
+
+    
     
 
 
-        
+    if (fgets (line, 1000, fchoice) != NULL)
+    {
+        index = atoi(strtok(line, ","));
+        strcpy(hotel_name, strtok(NULL, ","));
+        strcpy(city, strtok(NULL, ","));
+        price_single = atoi(strtok(NULL, ","));
+        price_deluxe = atoi(strtok(NULL, ","));
+        price_villa = atoi(strtok(NULL, ","));
+        price_luxury = atoi(strtok(NULL, ","));
+        strcpy(address, strtok(NULL, ","));
+    }
+    //random number for discount
+    srand(time(0));
+    int price_room=price_per_room*rooms;
+    int discount = (rand() % 5) + 1;
+    int price_stay=price_room*nights;
+    int int_price_commodities=0;
+    int mrp=price_stay+int_price_commodities;
+    int total_price=mrp-((mrp*discount)/100);
+    char extra_commodities[7][50];
+    
+    char buffer1[1000] = {0};
 
 
-    f_string_format(1,"\b\b  Price for the Room :  ");
-    printf("\n"); 
-    f_string_format(1,"\b\b  No. Of Adults :  ");
-    printf("\n"); 
-    f_string_format(1,"\b\b  No. Of Kids : ");
-    printf("\n"); 
-    f_string_format(1,"\b\b  Price for the stay : 4343");
+    for (int  i = 0; i < strlen(commodities); i++)
+    {
+        if (commodities[i]=='1')
+        {
+            int_price_commodities+=commodities_price[i];
+            strcat(buffer1, commodities_details[i]);
+            strcat(buffer1, ", ");
+        }
+    }
+    
+
+    
+
+    
+    
+    f_string_format(1,"\b\b  Price for each Room :  %d",price_per_room);//details.csv
     printf("\n");
-    f_string_format(1,"\b\b  Price for ext commodities : bed,pool");
+    f_string_format(1,"\b\b  No. Of Rooms :  %d",rooms);//details.csv
     printf("\n");
-    f_string_format(1,"\b\b  Discount for you :  10");
+    f_string_format(1,"\b\b  Price for the rooms:  %d",price_room);//details.csv
     printf("\n");
-    int a=21;
-    f_string_format(1,"\b\b  Payment to be made :  %d",a);
+    f_string_format(1,"\b\b  No. Of Adults :  %d",adults);//details.csv
+    printf("\n"); 
+    f_string_format(1,"\b\b  No. Of Kids : %d",kids);//details.csv
+    printf("\n"); 
+    f_string_format(1,"\b\b  Price for the stay : %d",price_stay);//multiply the no. of nights with the price of the rooms
+    printf("\n");
+    f_string_format(1,"\b\b  Price for ext commodities : %d",int_price_commodities);//details.csv
+    printf("\n");
+    f_string_format(1,"\b\b  Total MRP :  %d",mrp);//price of stay + price of commodities
+    printf("\n");
+    f_string_format(1,"\b\b  Discount for you :  %d %%",discount);//random genetated
+    printf("\n");
+    
+    f_string_format(1,"\b\b  Payment to be made :  %d",total_price);//price of stay + price of commodities - discount
     printf("\n");
 
     print_border("-");
     
-    f_string_format(1,"  Check In:\t12/23/23");
+    f_string_format(1,"  Check In: %s",check_indate);
     printf("\n");
-    f_string_format(1,"  Total Nights :\t12/13/23");
+    f_string_format(1,"  Total Nights : %d",nights);//details.csv
     printf("\n");
-    f_string_format(1,"  Hotel Name :\tTaj");
+    f_string_format(1,"  Hotel Name : %s",hotel_name);//customer_choice.csv
     printf("\n");
-    f_string_format(1,"  Location :\tMumbai");
+    f_string_format(1,"  Location : %s",city);//customer_choice.csv
     printf("\n");
     int b=265651;
-    f_string_format(1,"  Extra Commodities :noo");
+    f_string_format(1,"Extra Commodities : %s",buffer1);//details.csv
     printf("\n");
     print_border("-");
     print_border("-");
@@ -376,7 +478,7 @@ int main()
         }
         //Thanking you !!!
 
-        if (confirm_payment_switch_for_loading=='Y' || confirm_payment_switch_for_loading=='y')
+        if (confirm_payment_switch_for_loading)
         {
             printf("\n");
             f_string_format(1,"  Thank you for choosing us!!!\n");
@@ -385,7 +487,8 @@ int main()
         footer();
     }
 
-    fclose(fhotel);
+    fclose(fchoice);
+    fclose(fdetails);
     return 0;
 }
 
