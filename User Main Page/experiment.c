@@ -147,8 +147,12 @@ void display_hotels_by_city(struct hotel *hotels, int num_hotels, int city_numbe
 
         fclose(fp);
 
-        
-
+int i=0;
+    int city_index;
+    while(1){
+        clear_console();
+   
+    
 
         // Display menu
         f_string_format(1, "\033[1m==============\033[0m");
@@ -168,11 +172,12 @@ void display_hotels_by_city(struct hotel *hotels, int num_hotels, int city_numbe
         f_string_format(0, "\033[33m 11. Exit\033[0m");
         f_string_format(1, "\033[1m ==============================\033[0m\n");
         printf("Enter your choice of city by selecting the index number: ");
-   
+    
         scanf("%d", &city_number);
         getchar();
-        printf("\n"); // Clear newline character from input buffer
-
+        printf("\n"); // Clear newline character from input 
+   
+    
         switch (city_number) {
             case 1: clear_console();display_hotels_by_city(hotels, row-1, 1,city_name); break;
         case 2:
@@ -189,16 +194,17 @@ void display_hotels_by_city(struct hotel *hotels, int num_hotels, int city_numbe
         default: printf("Enter right number.\n");break;
         
     }
-        }
-    int i=0;
-    int city_index;
-    while(!i){
-    printf("Enter the hotel index(Enter 0 to go back.): ");
+
+     printf("Enter the hotel index(Enter 0 to go back.): ");
     scanf("%d",&city_index);
     getchar();
-        if(city_index==0){fclose(fp);system("./experiment");}
+    if(city_index==0){printf("Going back to city selection...\n");
+    SLEEP(2);
+    continue;}
     if(city_index>num_hot_city){printf("Enter a valid hotel index\n");}
-    else{i=1;}}
+    else if(city_index<num_hot_city){
+
+
     for (int i = 0; i < num_hotels2; i++) {
         if (hotels[i].index_in_city==city_index && strcmp(hotels[i].city, city_name) == 0) {
             FILE *fptr = fopen("customer_choice.csv", "w");
@@ -211,3 +217,5 @@ void display_hotels_by_city(struct hotel *hotels, int num_hotels, int city_numbe
         }
     }
 }
+    
+     else{i=1;}}}}
