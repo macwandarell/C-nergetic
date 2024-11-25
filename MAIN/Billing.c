@@ -1,18 +1,23 @@
 #include "../Code_Snippets/String_Alignment/f_string.h"
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #define cr_green "\033[1;38;2;0;100;0m"
 #define cr_yellow "\t \033[1;38;2;255;255;0m"
 #define cr_w "\t \033[1;38;255;255;255m"
-#include <locale.h>
-#ifdef _WIN32
-#include <windows.h>
+// #include <locale.h>
+// #ifdef _WIN32
+// #include <windows.h>
 #define SLEEP(seconds) Sleep((seconds) * 1000)
-#else
+// #else
 #include <unistd.h>
 #define SLEEP(seconds) sleep(seconds)
-#endif
+// #endif
+
+#define MAX_LINE_LENGTH 1024
+
 int confirm_payment_fun()
-{
+{   
     f_string_format(1,"\b\bConfirm the Payment?(Y/N):");
     char confirm_payment_in_fun;
     
@@ -115,22 +120,50 @@ void footer()
 
 int main()
 {  
-    setlocale(LC_ALL, "");
+    // setlocale(LC_ALL, "");
 
-    #ifdef _WIN32
-    // Set code page to UTF-8 for Windows console
-    SetConsoleOutputCP(CP_UTF8);
-    #endif
-
+    // #ifdef _WIN32
+    // // Set code page to UTF-8 for Windows console
+    // SetConsoleOutputCP(CP_UTF8);
+    // #endif
 
     clear_console();
     
     Company_name();
     header("Billing Information");
 
-    f_string_format(1,"\b\b  Price for the Room :  8756");
+
+    FILE *fhotel = NULL;
+    fhotel = fopen("details.csv","r");
+
+    // Prices for the commmodities
+    // Extra bed = Rs. 5000
+    // Spa = 5000
+    // Dinning = 2000
+    // Pick-Up Services = 1000
+    // Pets Room = 10000
+    // None = 0
+
+    char line[MAX_LINE_LENGTH];
+    char hotel_name[50];
+    char city[50];
+    char location[150];
+    
+
+    while(fgets(line, MAX_LINE_LENGTH, fhotel))
+    {
+        line[strcspn(line, "\n")] = '\0';
+        sscanf()
+        
+
+
+    f_string_format(1,"\b\b  Price for the Room :  ");
     printf("\n"); 
-    f_string_format(1,"\b\b  Price for the stay :  4343");
+    f_string_format(1,"\b\b  No. Of Adults :  ");
+    printf("\n"); 
+    f_string_format(1,"\b\b  No. Of Kids : ");
+    printf("\n"); 
+    f_string_format(1,"\b\b  Price for the stay : 4343");
     printf("\n");
     f_string_format(1,"\b\b  Price for ext commodities : bed,pool");
     printf("\n");
@@ -142,23 +175,25 @@ int main()
 
     print_border("-");
     
-    f_string_format(1,"  Check out :\t12/23/23");
+    f_string_format(1,"  Check In:\t12/23/23");
     printf("\n");
-    f_string_format(1,"  Check In :\t12/13/23");
+    f_string_format(1,"  Total Nights :\t12/13/23");
     printf("\n");
     f_string_format(1,"  Hotel Name :\tTaj");
     printf("\n");
     f_string_format(1,"  Location :\tMumbai");
     printf("\n");
     int b=265651;
-    f_string_format(1,"  Booking Date :\t%d",b);
-    printf("\n");
-    f_string_format(1,"  Commodities :noo");
+    f_string_format(1,"  Extra Commodities :noo");
     printf("\n");
     print_border("-");
     print_border("-");
 
     printf("\n ");
+
+    }
+
+
 
     
     int confirm_payment=confirm_payment_fun();          //if 1 -->page 1 confirmed so ,load next page
@@ -352,6 +387,8 @@ int main()
         
         footer();
     }
+
+    fclose(fhotel);
     return 0;
 }
 
