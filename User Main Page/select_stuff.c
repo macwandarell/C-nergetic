@@ -119,7 +119,7 @@ int main(){
         printf("From which date? (Please enter in dd/mm/yyyy format) ");
         scanf("%s",date);
         getchar();
-        printf("Select the room type:\n1 : Single Room\n2 : Deluxe Room\n3 : Super Deluxe\n4 : Luxury\n");
+        printf("Select the room type:\n1 : Single Room\n2 : Deluxe Room\n3 : Villa\n4 : Luxury\n");
         int type_num;
         char type[15];
         int price;
@@ -205,7 +205,7 @@ int main(){
         
     }}
    // FILE 1(for hotel):
-   // name,city,price_of_single,price_of_deluxe,price_of_super_deluxe,price_of_luxury,address.
+   // name,city,price_of_single,price_of_deluxe,price_of_villa,price_of_luxury,address.
 
    // FILE 2(for price):
    // nights(int),no_of_rooms,room_type(string),date(string),no_of_adults,no_of_kids,extra(string: 01010101)
