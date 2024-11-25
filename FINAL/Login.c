@@ -22,7 +22,7 @@ Customer* createCustomer(const char* username, const char* email, const char* pa
 }
 
 void writeUserOnTempFile(char *name,char* pass){
-    FILE *fp = fopen("temp_user.csv","w");
+    FILE *fp = fopen("tempUser.csv","w");
     fprintf(fp,"%s,%s",name,pass);
     fclose(fp);
 }
