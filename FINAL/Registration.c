@@ -1,17 +1,8 @@
-    #include <stdio.h>
+#include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
 #include "f_string.h"
 #include <stdbool.h>
-// #ifdef _WIN32
-// #include <windows.h>
-// #define SLEEP(seconds) Sleep((seconds) * 1000)
-// #else
-// #include <unistd.h>
-// #define SLEEP(seconds) sleep(seconds)
-// #endif
-
-
 
 typedef struct Customer{
     char username[51];
@@ -19,6 +10,7 @@ typedef struct Customer{
     char password[31];
     struct Customer *next;
 }Customer;
+
 void registerYourself();
 Customer* next_node=NULL;
 
@@ -40,6 +32,7 @@ Customer* create_new_customer(char* username,char* email,char* password){
     new_customer->password[30]='\0';
     new_customer->next=NULL;
     return new_customer;}
+
 void add_to_list(Customer** head,char* username,char* email,char* password){
     Customer* new_customer=create_new_customer(username,email,password);
     if(*head==NULL){
@@ -52,6 +45,7 @@ void add_to_list(Customer** head,char* username,char* email,char* password){
         }
         temp->next=new_customer;}
 }
+
 bool usernameExists(struct Customer *current, char *username) {
     while (current != NULL) {
         if (strcmp(current->username, username) == 0) {  // Compare strings with strcmp
@@ -74,7 +68,7 @@ bool emailExists(struct Customer *current, char *email) {
 
 int main(){
     clear_console();
-         int choice;
+    int choice;
 
     FILE* fp=fopen("userCredentials.csv","r");
 
@@ -107,9 +101,9 @@ int main(){
     
     do {
         // Display menu
-        f_string_format(1, "\033[1m==============\033[0m\n");
+        f_string_format(1, "\033[1m================\033[0m\n");
         f_string_format(1, "\033[38;5;208m          RoomLeloBhai.com   \033[0m\n");
-        f_string_format(1, "\033[1m ==============\033[0m\n\n");
+        f_string_format(1, "\033[1m ================\033[0m\n\n");
         f_string_format(0, "\033[33m 1. Register Yourself\033[0m\n");
         f_string_format(0, "\033[33m 2. Exit\033[0m\n");
         f_string_format(1, "\033[1m ==============================\033[0m\n\n");
