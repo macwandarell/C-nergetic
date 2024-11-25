@@ -70,6 +70,7 @@ void display_hotels_by_city(struct hotel *hotels, int num_hotels, int city_numbe
 
 
  int main(){
+     clear_console();
     int city_number;
     struct hotel hotels[100];
 
@@ -173,17 +174,18 @@ void display_hotels_by_city(struct hotel *hotels, int num_hotels, int city_numbe
         printf("\n"); // Clear newline character from input buffer
 
         switch (city_number) {
-        case 1: display_hotels_by_city(hotels, row-1, 1,city_name); break;
-        case 2: display_hotels_by_city(hotels, row-1, 2,city_name); break;
-        case 3: display_hotels_by_city(hotels, row-1, 3,city_name); break;
-        case 4: display_hotels_by_city(hotels, row-1, 4,city_name); break;
-        case 5: display_hotels_by_city(hotels, row-1, 5,city_name); break;
-        case 6: display_hotels_by_city(hotels, row-1, 6,city_name); break;
-        case 7: display_hotels_by_city(hotels, row-1, 7,city_name); break;
-        case 8: display_hotels_by_city(hotels, row-1, 8,city_name); break;
-        case 9: display_hotels_by_city(hotels, row-1, 9,city_name); break;
-        case 10: display_hotels_by_city(hotels, row-1, 10,city_name); break;
-        case 11: printf("Exiting Hotel Page.Goodbye!👋\n");system("./login");break;
+            case 1: clear_console();display_hotels_by_city(hotels, row-1, 1,city_name); break;
+        case 2:
+                clear_console();display_hotels_by_city(hotels, row-1, 2,city_name); break;
+            case 3: clear_console();display_hotels_by_city(hotels, row-1, 3,city_name); break;
+            case 4: clear_console();display_hotels_by_city(hotels, row-1, 4,city_name); break;
+            case 5: clear_console();display_hotels_by_city(hotels, row-1, 5,city_name); break;
+            case 6: clear_console();display_hotels_by_city(hotels, row-1, 6,city_name); break;
+            case 7: clear_console();display_hotels_by_city(hotels, row-1, 7,city_name); break;
+            case 8: clear_console();display_hotels_by_city(hotels, row-1, 8,city_name); break;
+            case 9: clear_console();display_hotels_by_city(hotels, row-1, 9,city_name); break;
+            case 10: clear_console();display_hotels_by_city(hotels, row-1, 10,city_name); break;
+            case 11: clear_console();printf("Exiting Hotel Page.Goodbye!👋\n");system("./login");break;
         default: printf("Enter right number.\n");break;
         
     }
@@ -191,9 +193,10 @@ void display_hotels_by_city(struct hotel *hotels, int num_hotels, int city_numbe
     int i=0;
     int city_index;
     while(!i){
-    printf("Enter the hotel index: ");
+    printf("Enter the hotel index(Enter 0 to go back.): ");
     scanf("%d",&city_index);
     getchar();
+        if(city_index==0){fclose(fp);system("./experiment");}
     if(city_index>num_hot_city){printf("Enter a valid hotel index\n");}
     else{i=1;}}
     for (int i = 0; i < num_hotels2; i++) {
