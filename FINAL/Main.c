@@ -12,12 +12,12 @@
 #endif
 
 void printUI(){
-    print_border("*");
-    f_string_format(1, "Welcome to RoomLeloBhai.Com\n");
+    print_border(whitebold"*"end);
+    f_string_format(1, orange"Welcome to RoomLeloBhai.Com\n"end);
     char s[100];
     date_d(s,sizeof(s));
     f_string_format(2, "%s        \n",s);
-    print_border("*");
+    print_border(whitebold"*"end);
 }
 
 int main(void){
@@ -44,11 +44,13 @@ int main(void){
         } else if (choice == 'E' || choice == 'e') {
             return 0;
         } else {
-            printf("Invalid choice. Please try again.\n");
+            printf("\033[31mInvalid choice. Please try again.\033[0m\n");
+            SLEEP(2);
         }
+        clear_console();
     }
 
-    printf("Exiting RoomLeloBhai.Com. Goodbye!\n");
+    printf("further code to be added\n");
 
 
 }

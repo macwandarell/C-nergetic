@@ -3,7 +3,12 @@
 #include <string.h>
 #include <stdarg.h>
 #include <time.h>
-
+#ifdef _WIN32
+    #include <windows.h>
+#else
+    #include <sys/ioctl.h>
+    #include <unistd.h>
+#endif
 
 // Function to get the terminal width dynamically
 static int get_terminal_width() {
