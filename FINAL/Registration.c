@@ -101,12 +101,12 @@ int main(){
     
     do {
         // Display menu
-        f_string_format(1, "\033[1m================\033[0m\n");
-        f_string_format(1, "\033[38;5;208m          RoomLeloBhai.com   \033[0m\n");
-        f_string_format(1, "\033[1m ================\033[0m\n\n");
+        f_string_format(1, bold"================\n"end);
+        f_string_format(1, orange"          RoomLeloBhai.com   \n"end);
+        f_string_format(1, bold" ================\n\n"end);
         f_string_format(0, "\033[33m 1. Register Yourself\033[0m\n");
         f_string_format(0, "\033[33m 2. Exit\033[0m\n");
-        f_string_format(1, "\033[1m ==============================\033[0m\n\n");
+        f_string_format(1, bold" ==============================\n\n"end);
         printf("Enter your choice: ");
    
         scanf("%d", &choice);
@@ -118,7 +118,7 @@ int main(){
                 registerYourself();
                 break;
             case 2:
-                printf("Exiting registration page. Goodbye!\n");
+                printf(green"Exiting registration page. Goodbye!\n"end);
                 SLEEP(4);
                 freeMemory(next_node);
                 clear_console();
@@ -127,7 +127,7 @@ int main(){
                 break;
 
             default:
-                printf("Invalid input. Please try again.\n");
+                printf(red"Invalid input. Please try again.\n"end);
         }
     } while (choice != 2);return 0;}
         
@@ -138,11 +138,11 @@ void registerYourself(){
         printf("Enter a username: ");
         fgets(username,sizeof(username),stdin);
         username[strcspn(username,"\n")]='\0';
-        if(strchr(username,' ')!=NULL){printf("Username cannot contain spaces.\n");continue;}
+        if(strchr(username,' ')!=NULL){printf(red"Username cannot contain spaces.\n"end);continue;}
         else{
             
             if (usernameExists(next_node,username)) {
-                printf("Username already exists. Please choose a different one.\n");
+                printf(red"Username already exists. Please choose a different one.\n"end);
             } else {
                 break;
             }}
@@ -154,7 +154,7 @@ void registerYourself(){
         email[strcspn(email,"\n")]='\0';
 
         if (emailExists(next_node,email)) {
-            printf("Email already exists. Please choose a different one.\n");
+            printf(red"Email already exists. Please choose a different one.\n"end);
         } else {
             break;
         }
@@ -174,7 +174,7 @@ void registerYourself(){
     fprintf(fp1,"%s,%s,%s\n",username,email,password);
     fflush(fp1);
 
-    printf("Customer registered successfully!\n");
+    printf(green"Customer registered successfully!\n"end);
     SLEEP(4);
     clear_console();
     add_to_list(&next_node, username, email, password);

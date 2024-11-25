@@ -9,6 +9,13 @@
 #define SLEEP(seconds) sleep(seconds)
 #endif
 
+#define orange "\033[38;5;208m"
+#define end "\033[0m"
+#define red "\033[31m"
+#define green "\033[32m"
+#define whitebold "\033[1;37m"
+#define bold "\033[1m"
+
 #include <stdlib.h>
 
 // Function to format and print a string
