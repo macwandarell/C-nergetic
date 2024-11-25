@@ -150,10 +150,7 @@ int main()
     char location[150];
     
 
-    while(fgets(line, MAX_LINE_LENGTH, fhotel))
-    {
-        line[strcspn(line, "\n")] = '\0';
-        sscanf()
+
         
 
 
@@ -191,7 +188,7 @@ int main()
 
     printf("\n ");
 
-    }
+    
 
 
 
