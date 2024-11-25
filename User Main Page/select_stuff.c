@@ -201,6 +201,8 @@ int main(){
         fprintf(f1,"%i,%i,%s,%i,%s,%i,%i,%s",nights,rooms,type,price,date,adults,kids,commodities);
         fflush(f1);
         fclose(f1);
+        SLEEP(2);
+        //Idhar tumhara function daal dena jo bhi billing wala ho
         return 0;
         
     }}

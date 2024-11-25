@@ -194,14 +194,14 @@ int i=0;
         default: printf("Enter right number.\n");break;
         
     }
-
-     printf("Enter the hotel index(Enter 0 to go back.): ");
+    
+    printf("Enter the hotel index(Enter 0 to go back.): ");
     scanf("%d",&city_index);
     getchar();
     if(city_index==0){printf("Going back to city selection...\n");
     SLEEP(2);
     continue;}
-    if(city_index>num_hot_city){printf("Enter a valid hotel index\n");}
+    if(city_index>num_hot_city){printf("Enter a valid hotel index\n");SLEEP(2);continue;}
     else if(city_index<num_hot_city){
 
 
@@ -218,4 +218,4 @@ int i=0;
     }
 }
     
-     else{i=1;}}}}
+     }}}
