@@ -125,6 +125,16 @@ void footer()
     f_string_format(1,"CompanyName | (C) ");
 }
 
+void remove_newline(char *str)
+            {
+            size_t len = strlen(str);
+            if (len > 0 && str[len - 1] == '\n') 
+            {
+            str[len - 1] = '\0';
+            }
+
+            }
+
 
 // Main Function
 
@@ -188,7 +198,7 @@ int main()
     int price_deluxe;
     int price_villa;
     int price_luxury;
-    char address[50];
+    char address[30];
     FILE *fdetails=fopen("details.csv","r");
     
 
@@ -478,12 +488,16 @@ int main()
         }
         //Thanking you !!!
 
+
+
         if (confirm_payment_switch_for_loading)
         {
             printf("\n");
             f_string_format(1,"  Thank you for choosing us!!!\n");
             
             
+            remove_newline(address);
+
             FILE *fuser_info;
             fuser_info = fopen("tempUser.csv","r");
             char line2[1000];
