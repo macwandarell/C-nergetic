@@ -188,7 +188,7 @@ int main()
     int price_deluxe;
     int price_villa;
     int price_luxury;
-    char address[150];
+    char address[50];
     FILE *fdetails=fopen("details.csv","r");
     
 
@@ -482,10 +482,49 @@ int main()
         {
             printf("\n");
             f_string_format(1,"  Thank you for choosing us!!!\n");
+            
+            
+            FILE *fuser_info;
+            fuser_info = fopen("tempUser.csv","r");
+            char line2[1000];
+            char user_name[50];
+            char password[50];
+
+            if (fgets(line2, 1000, fuser_info) != NULL)
+            {
+                strcpy(user_name, strtok(line2, ","));
+                strcpy(password, strtok(NULL, ","));
+            }
+
+            FILE *fuser_booked_data;
+            fuser_booked_data = fopen("user_booked_data.csv","a");
+            
+            //city,hotelname,location,checkindate,nights,rooms,type_of_room,total_price
+            fprintf(fuser_booked_data,"%s,%s,%s,%s,%s,%s,%d,%d,%s,%d\n",user_name,password,city,hotel_name,address,check_indate,nights,rooms,type,total_price);
+
+            
+            fclose(fuser_booked_data);
+            fclose(fuser_info);
+
+
+
+
+
+
+
         }
         
         footer();
     }
+
+
+
+
+
+
+
+
+
 
     fclose(fchoice);
     fclose(fdetails);
