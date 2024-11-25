@@ -260,26 +260,26 @@ int main()
 
     
     
-    f_string_format(1,"\b\b  Price for each Room :  %d",price_per_room);//details.csv
+    f_string_format(1,"\b\b  Price for each Room :  Rs.%d",price_per_room);//details.csv
     printf("\n");
     f_string_format(1,"\b\b  No. Of Rooms :  %d",rooms);//details.csv
     printf("\n");
-    f_string_format(1,"\b\b  Price for the rooms:  %d",price_room);//details.csv
+    f_string_format(1,"\b\b  Price for the rooms:  Rs.%d",price_room);//details.csv
     printf("\n");
     f_string_format(1,"\b\b  No. Of Adults :  %d",adults);//details.csv
     printf("\n"); 
     f_string_format(1,"\b\b  No. Of Kids : %d",kids);//details.csv
     printf("\n"); 
-    f_string_format(1,"\b\b  Price for the stay : %d",price_stay);//multiply the no. of nights with the price of the rooms
+    f_string_format(1,"\b\b  Price for the stay : Rs.%d",price_stay);//multiply the no. of nights with the price of the rooms
     printf("\n");
-    f_string_format(1,"\b\b  Price for ext commodities : %d",int_price_commodities);//details.csv
+    f_string_format(1,"\b\b  Price for ext commodities : Rs.%d",int_price_commodities);//details.csv
     printf("\n");
-    f_string_format(1,"\b\b  Total MRP :  %d",mrp);//price of stay + price of commodities
+    f_string_format(1,"\b\b  Total MRP :  Rs.%d",mrp);//price of stay + price of commodities
     printf("\n");
     f_string_format(1,"\b\b  Discount for you :  %d %%",discount);//random genetated
     printf("\n");
     
-    f_string_format(1,"\b\b  Payment to be made :  %d",total_price);//price of stay + price of commodities - discount
+    f_string_format(1,"\b\b  Payment to be made :  Rs.%d",total_price);//price of stay + price of commodities - discount
     printf("\n");
 
     print_border("-");
