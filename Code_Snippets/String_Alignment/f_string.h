@@ -12,6 +12,10 @@ void f_string_format(int align, const char* format, ...);
 
 // Function to clear the console
 void clear_console();
+void Company_name();
+void header(char ar[100]);
+void footer();
+int confirm_payment_fun();
 
 // Function to get the terminal width
 void print_border(char *border);

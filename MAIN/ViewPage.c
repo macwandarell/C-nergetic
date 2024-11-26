@@ -21,10 +21,10 @@ int main()
 {  
 
     clear_console();
-    print_border("\033[1m~\033[0m");
-    
-    f_string_format(0,"\033[1;38;2;255;165;0mTrivago\033[0m\n");    
 
+    Company_name();
+    header("View Booking Details");
+    
     char arr[100];
     date_d(arr,sizeof(arr));
     f_string_format(2,"%s",arr);

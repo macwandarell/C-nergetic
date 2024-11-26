@@ -20,111 +20,7 @@
 #include <stdlib.h>
 
 
-
-
-
-int confirm_payment_fun()
-{   
-    f_string_format(1,"\b\bConfirm the Payment?(Y/N):");
-    char confirm_payment_in_fun;
-    
-    scanf(" %c",&confirm_payment_in_fun);
-    while (getchar() != '\n');
-    printf("\n");
-    if(confirm_payment_in_fun=='Y' || confirm_payment_in_fun=='y')
-    {   
-        f_string_format(1,"Payment is confirmed");
-        printf("\n");
-        return 1;
-    }
-    else if(confirm_payment_in_fun=='N' || confirm_payment_in_fun=='n')
-    {   f_string_format(1,"Are you sure? Please enter Y or N:");
-
-        
-        scanf(" %c",&confirm_payment_in_fun);
-        while (getchar() != '\n');
-        
-        printf("\n");
-        if(confirm_payment_in_fun=='Y' || confirm_payment_in_fun=='y')
-        {    
-            f_string_format(1,"Sure,Payment is declined!");
-            printf("\n");
-            return 0;
-        }
-        else if(confirm_payment_in_fun=='N' || confirm_payment_in_fun=='n')
-        {   f_string_format(1,"OK,Confirming the Payment....");
-            printf("\n");
-            return 1;
-        }
-        else
-        {
-            f_string_format(1,"Invalid Input,Due to which Payment is declined");
-            printf("\n");
-            return 0;
-        }
-    }
-    else
-    {
-        f_string_format(1,"Invalid Input");
-        printf("\n");
-        f_string_format(1,"You want to continue and Confirm the Payment? Please enter Y or N:");
-        
-        scanf(" %c",&confirm_payment_in_fun);
-        while (getchar() != '\n');
-        
-        printf("\n");
-        if(confirm_payment_in_fun=='Y' || confirm_payment_in_fun=='y')
-        {    
-            f_string_format(1,"Ok,Confirming the Payment....");
-            printf("\n");
-            return 1;
-        }
-        else if(confirm_payment_in_fun=='N' || confirm_payment_in_fun=='n')
-        {   
-            f_string_format(1,"Sure,Payment is declined!");
-            printf("\n");
-            return 0;
-        }
-        else
-        {
-            f_string_format(1,"Invalid Input,Due to which Payment is declined");
-            printf("\n");
-            return 0;
-        }
-    }
-
-
-}
-
-void Company_name() 
-{
-    print_border("\033[1m~\033[0m");
-    printf("\n");
-    f_string_format(0,"\033[1;38;2;255;165;0mRoom.Lelo.Bhai.com\033[0m");
-    printf("\n");
-    char arr[100];
-    date_d(arr,sizeof(arr));
-    f_string_format(2,"%s",arr);
-    print_border("\033[1m~\033[0m");
-    printf("\n");
-}
-void header(char ar[100])
-{
-    f_string_format(1,"\t\033[1;38;2;0;200;0m\t%s\033[0m\n",ar);
-    print_border("-");
-    print_border("-");
-}
-void footer()
-{
-    printf("\n");
-    print_border("-");
-    f_string_format(1,"Customer Care :98989XXXXX");
-    printf("\n");
-    f_string_format(1,"email id :temp@gmail.com");
-    printf("\n");
-    f_string_format(1,"CompanyName | (C) ");
-}
-
+// Function to remove newline character from a string
 void remove_newline(char *str)
             {
             size_t len = strlen(str);
@@ -141,12 +37,7 @@ void remove_newline(char *str)
 
 int main()
 {  
-    // setlocale(LC_ALL, "");
-
-    // #ifdef _WIN32
-    // // Set code page to UTF-8 for Windows console
-    // SetConsoleOutputCP(CP_UTF8);
-    // #endif
+    
 
     clear_console();
     
@@ -162,14 +53,7 @@ int main()
     char line[1000];
     
 
-    // I HAVE TO IMPORT DATA FROM ANOTHER FOLDER NAMED "User Main Page" FILE NAME IS EXPERIMENTAL.C
-    // AND I WANT THE PRICE AND ALL FROM THE FILE NAMED "details.csv" 
-    //SO WRITE ME A CODE FOR THAT
-    // I HAVE TO PRINT THE DETAILS OF THE HOTEL AND THE CUSTOMER DETAILS
-    // I HAVE TO PRINT THE TOTAL AMOUNT TO BE PAID
-    // I HAVE TO PRINT THE PAYMENT METHOD
     
-    //code for reading data form the details.csv file
     
 
     char line1[1000];
@@ -219,7 +103,7 @@ int main()
 
     
     
-
+    //reading user choice
 
     if (fgets (line, 1000, fchoice) != NULL)
     {
@@ -232,6 +116,7 @@ int main()
         price_luxury = atoi(strtok(NULL, ","));
         strcpy(address, strtok(NULL, ","));
     }
+
     //random number for discount
     srand(time(0));
     int price_room=price_per_room*rooms;
@@ -244,7 +129,7 @@ int main()
     
     char buffer1[1000] = {0};
 
-
+    //code for calculating the price of the commodities and appending it to the buffer for printing the list user selected     
     for (int  i = 0; i < strlen(commodities); i++)
     {
         if (commodities[i]=='1')
@@ -257,9 +142,11 @@ int main()
     
 
     
+//*****************************************************************************************************************/
+        //Page 1 Starts --> Part 1
+//*****************************************************************************************************************/
 
-    
-    
+
     f_string_format(1,"\b\b  Price for each Room :  Rs.%d",price_per_room);//details.csv
     printf("\n");
     f_string_format(1,"\b\b  No. Of Rooms :  %d",rooms);//details.csv
@@ -282,6 +169,10 @@ int main()
     f_string_format(1,"\b\b  Payment to be made :  Rs.%d",total_price);//price of stay + price of commodities - discount
     printf("\n");
 
+
+    //Page 1 --> Part 2
+
+
     print_border("-");
     
     f_string_format(1,"  Check In: %s",check_indate);
@@ -301,7 +192,7 @@ int main()
     printf("\n ");
 
     
-
+    //Page 1 --> Part 3
 
 
     
@@ -316,18 +207,18 @@ int main()
     {
         
         f_string_format(1,"  We are loading you to the Payment Gateway...");
-        printf("\n");
+        
     }
     
-    printf("\n \n");
+    
 
     footer();
     
-    SLEEP(2);
+    SLEEP(2); // Sleep for 2 seconds (wait for 2 seconds)
 
 
     //*****************************************************************************************************************/
-    //  New Page for Payment Method
+    // Page 2 for Payment Method
     //*****************************************************************************************************************/
     
 
@@ -357,7 +248,7 @@ int main()
         
         char details[100];
         int flag=1;
-        while (flag)
+        while (flag)    //loop for checking the payment method
         {
             f_string_format(1," Enter the Payment Method :");
             int payment_method;
@@ -489,6 +380,7 @@ int main()
         //Thanking you !!!
 
 
+        //code for writing the data to the user_booked_data.csv
 
         if (confirm_payment_switch_for_loading)
         {
@@ -519,26 +411,10 @@ int main()
             
             fclose(fuser_booked_data);
             fclose(fuser_info);
-
-
-
-
-
-
-
         }
         
         footer();
     }
-
-
-
-
-
-
-
-
-
 
     fclose(fchoice);
     fclose(fdetails);

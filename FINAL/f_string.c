@@ -29,6 +29,19 @@ static int get_terminal_width() {
     return width;
 }
 
+void Company_name() 
+{
+    print_border("\033[1m~\033[0m");
+    printf("\n");
+    f_string_format(0,"\033[1;38;2;255;165;0mRoom.Lelo.Bhai.com\033[0m");
+    printf("\n");
+    char arr[100];
+    date_d(arr,sizeof(arr));
+    f_string_format(2,"%s",arr);
+    print_border("\033[1m~\033[0m");
+    printf("\n");
+}
+
 void print_border(char *border) {
     int width = get_terminal_width();
     for (int i = 0; i < width; i++) {
@@ -37,6 +50,23 @@ void print_border(char *border) {
     printf("\n");
 }
 
+void header(char ar[100])
+{
+    f_string_format(1,"\t\033[1;38;2;0;200;0m\t%s\033[0m\n",ar);
+    print_border("-");
+    print_border("-");
+}
+
+void footer()
+{
+    printf("\n");
+    print_border("-");
+    f_string_format(1,"Customer Care :98989XXXXX");
+    printf("\n");
+    f_string_format(1,"email id :temp@gmail.com");
+    printf("\n");
+    f_string_format(1,"CompanyName | (C) ");
+}
 // Function to format and print a string with alignment
 void f_string_format(int align, const char* format, ...) {
     int width = get_terminal_width(); // Get dynamic terminal width
@@ -140,4 +170,77 @@ void rating_to_stars(float rating) {
     }
 
     printf("\n");
+}
+
+int confirm_payment_fun()
+{   
+    f_string_format(1,"\b\bConfirm the Payment?(Y/N):");
+    char confirm_payment_in_fun;
+    
+    scanf(" %c",&confirm_payment_in_fun);
+    while (getchar() != '\n');
+    printf("\n");
+    if(confirm_payment_in_fun=='Y' || confirm_payment_in_fun=='y')
+    {   
+        f_string_format(1,"Payment is confirmed");
+        printf("\n");
+        return 1;
+    }
+    else if(confirm_payment_in_fun=='N' || confirm_payment_in_fun=='n')
+    {   f_string_format(1,"Are you sure? Please enter Y or N:");
+
+        
+        scanf(" %c",&confirm_payment_in_fun);
+        while (getchar() != '\n');
+        
+        printf("\n");
+        if(confirm_payment_in_fun=='Y' || confirm_payment_in_fun=='y')
+        {    
+            f_string_format(1,"Sure,Payment is declined!");
+            printf("\n");
+            return 0;
+        }
+        else if(confirm_payment_in_fun=='N' || confirm_payment_in_fun=='n')
+        {   f_string_format(1,"OK,Confirming the Payment....");
+            printf("\n");
+            return 1;
+        }
+        else
+        {
+            f_string_format(1,"Invalid Input,Due to which Payment is declined");
+            printf("\n");
+            return 0;
+        }
+    }
+    else
+    {
+        f_string_format(1,"Invalid Input");
+        printf("\n");
+        f_string_format(1,"You want to continue and Confirm the Payment? Please enter Y or N:");
+        
+        scanf(" %c",&confirm_payment_in_fun);
+        while (getchar() != '\n');
+        
+        printf("\n");
+        if(confirm_payment_in_fun=='Y' || confirm_payment_in_fun=='y')
+        {    
+            f_string_format(1,"Ok,Confirming the Payment....");
+            printf("\n");
+            return 1;
+        }
+        else if(confirm_payment_in_fun=='N' || confirm_payment_in_fun=='n')
+        {   
+            f_string_format(1,"Sure,Payment is declined!");
+            printf("\n");
+            return 0;
+        }
+        else
+        {
+            f_string_format(1,"Invalid Input,Due to which Payment is declined");
+            printf("\n");
+            return 0;
+        }
+    }
+
+
 }
