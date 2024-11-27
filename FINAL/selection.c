@@ -4,13 +4,7 @@
 #include <ctype.h>
 #include <stdbool.h>
 #include "f_string.h"
-#ifdef _WIN32
-#include <windows.h>
-#define SLEEP(seconds) Sleep((seconds) * 1000)
-#else
-#include <unistd.h>
-#define SLEEP(seconds) sleep(seconds)
-#endif
+
 struct hotel {
     int index_in_city;
     char name[201];
@@ -25,8 +19,8 @@ struct hotel {
 };
 int main(){
     clear_console();
-    FILE *f1=fopen("details.csv","w");
-    FILE *f2=fopen("customer_choice.csv","r");
+    FILE *f1=fopen("temp_details.csv","w");
+    FILE *f2=fopen("temp_customer_choice.csv","r");
     int index;
     if(!f1)
         printf("File does not exist.\n");
@@ -35,7 +29,7 @@ int main(){
     else{
         char first_char=fgetc(f2);
         index=atoi(&first_char);}
-    FILE *fp = fopen("hotel_list.csv", "r");
+    FILE *fp = fopen("hotelList.csv", "r");
     
     if (!fp) {
         printf("File does not exist.\n");
@@ -108,8 +102,8 @@ int main(){
         
         fclose(fp);
         
-        f_string_format(1, "\033[1m==============\033[0m");
-        f_string_format(1, "\033[38;5;208m          TRIVAGO   \033[0m");
+        f_string_format(1, "\033[1m==============\033[0m\n");
+        f_string_format(1, "\033[38;5;208m          TRIVAGO   \033[0m\n");
         f_string_format(1, "\033[1m  ==============\033[0m\n");
         printf("How many nights? ");
         int nights;
@@ -172,8 +166,8 @@ int main(){
         SLEEP(4);
         clear_console();
         
-        f_string_format(1, "\033[1m==============\033[0m");
-        f_string_format(1, "\033[38;5;208m          TRIVAGO   \033[0m");
+        f_string_format(1, "\033[1m==============\033[0m\n");
+        f_string_format(1, "\033[38;5;208m          TRIVAGO   \033[0m\n");
         f_string_format(1, "\033[1m  ==============\033[0m\n");
         char commodities[7];
         printf("Select extra commodities:(type 0 if you don't want or 1 if you want)\n");

@@ -1,15 +1,7 @@
 #include <stdio.h>
 #include "f_string.h"
-#include "rating.h"
 #include <stdlib.h>// for atoi, atof
 #include <string.h>
-#ifdef _WIN32
-#include <windows.h>
-#define SLEEP(seconds) Sleep((seconds) * 1000)
-#else
-#include <unistd.h>
-#define SLEEP(seconds) sleep(seconds)
-#endif
 
 // Define the hotel structure
 struct hotel {
@@ -74,7 +66,7 @@ void display_hotels_by_city(struct hotel *hotels, int num_hotels, int city_numbe
     int city_number;
     struct hotel hotels[100];
 
-    FILE *fp = fopen("hotel_list.csv", "r");
+    FILE *fp = fopen("hotelList.csv", "r");
 
     if (!fp) {
         printf("File does not exist.\n");
@@ -155,21 +147,21 @@ int i=0;
     
 
         // Display menu
-        f_string_format(1, "\033[1m==============\033[0m");
-        f_string_format(1, "\033[38;5;208m          TRIVAGO   \033[0m");
+        f_string_format(1, "\033[1m==============\033[0m\n");
+        f_string_format(1, "\033[38;5;208m          TRIVAGO   \033[0m\n");
         f_string_format(1, "\033[1m  ==============\033[0m\n");
-        f_string_format(0, "\033[33m City List\033[0m");
-        f_string_format(0, "\033[33m 1. Mumbai\033[0m");
-        f_string_format(0, "\033[33m 2. Delhi\033[0m");
-        f_string_format(0, "\033[33m 3. Bangalore\033[0m");
-        f_string_format(0, "\033[33m 4. Kolkata\033[0m");
-        f_string_format(0, "\033[33m 5. Chennai\033[0m");
-        f_string_format(0, "\033[33m 6. Udaipur\033[0m");
-        f_string_format(0, "\033[33m 7. Ahmedabad\033[0m");
-        f_string_format(0, "\033[33m 8. Goa\033[0m");
-        f_string_format(0, "\033[33m 9. Manali\033[0m");
-        f_string_format(0, "\033[33m 10. Hyderabad\033[0m");
-        f_string_format(0, "\033[33m 11. Exit\033[0m");
+        f_string_format(0, "\033[33m City List\033[0m\n");
+        f_string_format(0, "\033[33m 1. Mumbai\033[0m\n");
+        f_string_format(0, "\033[33m 2. Delhi\033[0m\n");
+        f_string_format(0, "\033[33m 3. Bangalore\033[0m\n");
+        f_string_format(0, "\033[33m 4. Kolkata\033[0m\n");
+        f_string_format(0, "\033[33m 5. Chennai\033[0m\n");
+        f_string_format(0, "\033[33m 6. Udaipur\033[0m\n");
+        f_string_format(0, "\033[33m 7. Ahmedabad\033[0m\n");
+        f_string_format(0, "\033[33m 8. Goa\033[0m\n");
+        f_string_format(0, "\033[33m 9. Manali\033[0m\n");
+        f_string_format(0, "\033[33m 10. Hyderabad\033[0m\n");
+        f_string_format(0, "\033[33m 11. Exit\033[0m\n");
         f_string_format(1, "\033[1m ==============================\033[0m\n");
         printf("Enter your choice of city by selecting the index number: ");
     
@@ -190,7 +182,8 @@ int i=0;
             case 8: clear_console();display_hotels_by_city(hotels, row-1, 8,city_name); break;
             case 9: clear_console();display_hotels_by_city(hotels, row-1, 9,city_name); break;
             case 10: clear_console();display_hotels_by_city(hotels, row-1, 10,city_name); break;
-            case 11: clear_console();printf("Exiting Hotel Page.Goodbye!👋\n");system("./login");break;
+            case 11: clear_console();printf("Exiting Hotel Page.Goodbye!👋\n");return 1;
+            break;
         default: printf("Enter right number.\n");break;
         
     }
@@ -207,7 +200,7 @@ int i=0;
 
     for (int i = 0; i < num_hotels2; i++) {
         if (hotels[i].index_in_city==city_index && strcmp(hotels[i].city, city_name) == 0) {
-            FILE *fptr = fopen("customer_choice.csv", "w");
+            FILE *fptr = fopen("temp_customer_choice.csv", "w");
             fprintf(fptr,"%i,%s,%s,%d,%d,%d,%d,%s\n",i,hotels[i].name, hotels[i].city, hotels[i].price_of_single, hotels[i].price_of_deluxe,hotels[i].price_of_villa,hotels[i].price_of_luxury,hotels[i].address);
             fflush(fptr);
             fclose(fptr);

@@ -1,4 +1,4 @@
-#include "../Code_Snippets/String_Alignment/f_string.h"
+#include "f_string.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -6,18 +6,8 @@
 #define cr_yellow "\t \033[1;38;2;255;255;0m"
 #define cr_w "\t \033[1;38;255;255;255m"
 // #include <locale.h>
-#ifdef _WIN32
-#include <windows.h>
-#define SLEEP(seconds) Sleep((seconds) * 1000)
-#else
-#include <unistd.h>
-#define SLEEP(seconds) sleep(seconds)
-#endif
 
 #include <time.h>
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
 
 
 // Function to remove newline character from a string
@@ -51,10 +41,6 @@ int main()
 
 
     char line[1000];
-    
-
-    
-    
 
     char line1[1000];
     int nights;

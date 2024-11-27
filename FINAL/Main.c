@@ -1,17 +1,28 @@
 #include <stdio.h>
 #include "f_string.h"
 #include <stdlib.h>
+
 #ifdef _WIN32
     #define Register "registration.exe"
     #define Admin "admin.exe"
     #define Login "login.exe"
+    #define ViewPage "viewpage.exe"
+    #define UserPage "userpage.exe"
+    #define Selection "selection.exe"
+    #define Billing "Billing.exe"
+
 #else
     #define Register "./registration"
     #define Admin "./admin"
     #define Login "./login"
+    #define ViewPage "./viewpage"
+    #define UserPage "./userpage"
+    #define Selection "./selection"
+    #define Billing "./Billing"
+
 #endif
 
-void printUI(){
+void printMain(){
     print_border(whitebold"*"end);
     f_string_format(1, orange"Welcome to RoomLeloBhai.Com\n"end);
     char s[100];
@@ -20,10 +31,19 @@ void printUI(){
     print_border(whitebold"*"end);
 }
 
-int main(void){
+void printUser(){
+    print_border(whitebold"*"end);
+    f_string_format(1, orange"User Page\n"end);
+    char s[100];
+    date_d(s,sizeof(s));
+    f_string_format(2, "%s        \n",s);
+    print_border(whitebold"*"end);
+}
+
+int entry(){
     int flag = 1;
     while (flag){
-        printUI();
+        printMain();
         printf("Login(L)\n");
         printf("Register(R)\n");
         printf("Admin(A)\n");
@@ -44,13 +64,49 @@ int main(void){
         } else if (choice == 'E' || choice == 'e') {
             return 0;
         } else {
-            printf("\033[31mInvalid choice. Please try again.\033[0m\n");
+            printf(red"Invalid choice. Please try again.\n"end);
             SLEEP(2);
         }
         clear_console();
     }
+}
 
-    printf("further code to be added\n");
+int hotel(){
+    int flag = 1;
+    while(flag){
+        printUser();
+        printf("Book a Hotel(B)\n");
+        printf("View Booked Hotels(V)\n");
+        printf("Exit(E)\n");
 
+        char choice;
+        scanf(" %c", &choice);
+        getchar();
+        printf("\n");
 
+        if (choice == 'V' || choice == 'v') {
+            system(ViewPage);
+        } else if (choice == 'B' || choice == 'b') {
+            if (system(UserPage) == 1){
+                flag = 0;
+                entry();
+            }else{
+                system(Selection);
+                system(Billing);
+                flag = 0;
+                entry();
+            }
+        } else if (choice == 'E' || choice == 'e') {
+            return 0;
+        } else {
+            printf(red"Invalid choice. Please try again.\n"end);
+            SLEEP(2);
+        }
+        clear_console();
+    }
+}
+
+int main(void){
+    entry();
+    hotel();
 }

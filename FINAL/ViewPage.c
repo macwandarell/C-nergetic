@@ -1,9 +1,7 @@
-#include "../Code_Snippets/String_Alignment/f_string.h"
+#include "f_string.h"
 #include <stdio.h>
 #include<stdlib.h>
 #include<string.h>
-
-
 
 void remove_newline(char *str)
     {
@@ -94,5 +92,8 @@ int main()
     }
     fclose(fview_details);
 
+    printf("\n");
+    printf("Press any key to exit...");
+    scanf("%*c");
     return 0;
 }
