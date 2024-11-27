@@ -21,6 +21,12 @@ Customer* createCustomer(const char* username, const char* email, const char* pa
     return newCustomer;
 }
 
+void writeUserOnTempFile(char *name,char* pass){
+    FILE *fp = fopen("tempUser.csv","w");
+    fprintf(fp,"%s,%s",name,pass);
+    fclose(fp);
+}
+
 void appendCustomer(Customer** head, const char* username, const char* email, const char* password) {
     Customer* newCustomer = createCustomer(username, email, password);
 
@@ -36,12 +42,12 @@ void appendCustomer(Customer** head, const char* username, const char* email, co
 }
 
 void print_UI() {
-    print_border("*");
-    f_string_format(1, "Welcome To The Login Page!\n");
+    print_border(whitebold"*"end);
+    f_string_format(1, orange"Welcome To The Login Page!\n"end);
     char s[100];
     date_d(s,sizeof(s));
     f_string_format(2, "%s        \n",s);
-    print_border("*");
+    print_border(whitebold"*"end);
 }
 
 void login() {
@@ -76,7 +82,8 @@ void login() {
         Customer* current = customerList;
         while (current != NULL) {
             if (strcmp(current->username, username) == 0 && strcmp(current->password, password) == 0) {
-                f_string_format(1, "Login Successful!");
+                f_string_format(1, green"Login Successful!\n"end);
+                writeUserOnTempFile(username,password);
                 SLEEP(4);
                 clear_console();
                 flag = 0;
@@ -85,7 +92,7 @@ void login() {
             current = current->next;
         }
         if (flag) {
-            f_string_format(1, "Invalid username or password. Please try again.");
+            f_string_format(1,red"Invalid username or password. Please try again.\n"end);
             SLEEP(4);
             clear_console();
             print_UI();

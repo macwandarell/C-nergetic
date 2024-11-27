@@ -9,6 +9,13 @@
 #define SLEEP(seconds) sleep(seconds)
 #endif
 
+#define orange "\033[38;5;208m"
+#define end "\033[0m"
+#define red "\033[31m"
+#define green "\033[32m"
+#define whitebold "\033[1;37m"
+#define bold "\033[1m"
+
 #include <stdlib.h>
 
 // Function to format and print a string
@@ -20,7 +27,10 @@ void f_string_format(int align, const char* format, ...);
 
 // Function to clear the console
 void clear_console();
-
+void Company_name();
+void header(char ar[100]);
+void footer();
+int confirm_payment_fun();
 void rating_to_stars(float rating);
 
 // Function to get the terminal width

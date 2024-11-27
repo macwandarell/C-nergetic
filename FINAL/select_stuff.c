@@ -198,7 +198,7 @@ int main(){
         printf("Pet-rooms: ");
         scanf("%c",&commodities[6]);
         getchar();
-        fprintf(f1,"%i,%i,%s,%i,%s,%i,%i,%s\n",nights,rooms,type,price,date,adults,kids,commodities);
+        fprintf(f1,"%i,%i,%s,%i,%s,%i,%i,%s",nights,rooms,type,price,date,adults,kids,commodities);
         fflush(f1);
         fclose(f1);
         SLEEP(2);
