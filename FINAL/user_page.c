@@ -183,7 +183,7 @@ int i=0;
             case 9: clear_console();display_hotels_by_city(hotels, row-1, 9,city_name); break;
             case 10: clear_console();display_hotels_by_city(hotels, row-1, 10,city_name); break;
             case 11:
-                printf("Exiting Hotel Page.Goodbye!👋\n");SLEEP(2);system("./main");return 1;
+                printf("Exiting Hotel Page.Goodbye!👋\n");SLEEP(2);return 1;
             break;
         default: printf("Enter right number.\n");break;
         
@@ -207,7 +207,7 @@ int i=0;
             fclose(fptr);
             printf("You have selected : %s,%s\n",hotels[i].name,hotels[i].city);
             SLEEP(4);
-            system("./selection");
+            return 0;
         }
     }
 }

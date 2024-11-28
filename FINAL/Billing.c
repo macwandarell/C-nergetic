@@ -37,7 +37,7 @@ int main()
 
 
     FILE *fchoice;
-    fchoice = fopen("customer_choice.csv","r");
+    fchoice = fopen("temp_customer_choice.csv","r");
 
 
     char line[1000];
@@ -69,7 +69,7 @@ int main()
     int price_villa;
     int price_luxury;
     char address[30];
-    FILE *fdetails=fopen("details.csv","r");
+    FILE *fdetails=fopen("temp_details.csv","r");
     
 
     char check_indate[50];

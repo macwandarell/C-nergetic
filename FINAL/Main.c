@@ -42,8 +42,7 @@ void printUser(){
 
 int entry(){
     clear_console();
-    int flag = 1;
-    while (flag){
+    while (1){
         printMain();
         printf("Login(L)\n");
         printf("Register(R)\n");
@@ -56,8 +55,8 @@ int entry(){
         printf("\n");
 
         if (choice == 'L' || choice == 'l') {
-            flag = 0;
             system(Login);
+            return 1;
         } else if (choice == 'R' || choice == 'r') {
             system(Register);
         } else if (choice == 'A' || choice == 'a') {
@@ -65,7 +64,6 @@ int entry(){
         } else if (choice == 'E' || choice == 'e') {
             printf("Thanks for visiting...\n");
             SLEEP(2);
-            system("killall main");
             return 0;
         } else {
             printf(red"Invalid choice. Please try again.\n"end);
@@ -73,12 +71,11 @@ int entry(){
         }
         clear_console();
     }
-    return 1;}
+}
 
 int hotel(){
     clear_console();
-    int flag = 1;
-    while(flag){
+    while(1){
         printUser();
         printf("Book a Hotel(B)\n");
         printf("View Booked Hotels(V)\n");
@@ -93,25 +90,31 @@ int hotel(){
             system(ViewPage);
         } else if (choice == 'B' || choice == 'b') {
             if (system(UserPage) == 1){
-                flag = 0;
-                entry();
+                return 0;
             }else{
                 system(Selection);
                 system(Billing);
-                flag = 0;
-                entry();
+                return 1;
             }
         } else if (choice == 'E' || choice == 'e') {
-            entry();
+            return 0;
         } else {
             printf(red"Invalid choice. Please try again.\n"end);
             SLEEP(2);
         }
         clear_console();
     }
-    return 1;}
+}
 
 int main(void){
+    while (1){
+        if (entry() == 0){
+            break;
+        }
+        else{
+            hotel();
+        }
+    }
     clear_console();
     entry();
     hotel();
