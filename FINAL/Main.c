@@ -96,8 +96,10 @@ int hotel(){
         if (choice == 'V' || choice == 'v') {
             system(ViewPage);
         } else if (choice == 'B' || choice == 'b') {
-            if (status(system(UserPage)) == 1){
-                return 0;
+            int ret=system(UserPage);
+            int exit_code=status(ret);
+            if (exit_code == 1) {
+                            return 0;
             }else{
                 system(Selection);
                 system(Billing);
