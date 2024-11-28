@@ -6,21 +6,21 @@
 void remove_newline(char *str)
     {
         size_t len = strlen(str);
-        if (len > 0 && str[len - 1] == '\n') 
+        if (len > 0 && str[len - 1] == '\n')
         {
             str[len - 1] = '\0';
         }
     }
-    
+
 
 int main()
-{  
+{
 
     clear_console();
 
     Company_name();
     header("View Booking Details");
-    
+
     char arr[100];
     date_d(arr,sizeof(arr));
     f_string_format(2,"%s",arr);
@@ -41,7 +41,20 @@ int main()
         printf("File does not exist.\n");
         return 1;
     }
-    fscanf(fp, "%[^,],%s", target_user, target_password);
+char line1[256];  // Adjust the size as needed
+fgets(line, sizeof(line), fp);  // Read a line from the file
+
+// Tokenize the line
+char *token = strtok(line1, ",");
+if (token != NULL) {
+    strcpy(target_user, token);  // Copy the first token to target_user
+}
+
+token = strtok(NULL, ",");
+if (token != NULL) {
+    strcpy(target_password, token);  // Copy the second token to target_password
+}
+    fclose(fp);
 
     // printf("Enter the username to search: ");
     // fgets(target_user, sizeof(target_user), stdin);
@@ -51,24 +64,24 @@ int main()
     // printf("Enter the password: ");
     // fgets(target_password, sizeof(target_password), stdin);
     // target_password[strcspn(target_password, "\n")] = '\0';
-    
+
 
     FILE *fview_details = fopen("user_booked_data.csv", "r");
 
     while (fgets(line, sizeof(line), fview_details))
     {
         line[strcspn(line, "\n")] = '\0';
-    
+
         char *temp = strdup(line); // Copy the line for strtok
         char *token = strtok(temp, ",");
 
-        if (token && strcmp(token, target_user) == 0) 
+        if (token && strcmp(token, target_user) == 0)
         {
             // If the username matches, check the password
             strcpy(username, token);
             strcpy(password, strtok(NULL, ","));
-            
-            if (strcmp(password, target_password) == 0) 
+
+            if (strcmp(password, target_password) == 0)
             {
 
                 strcpy(city, strtok(NULL, ","));
@@ -91,11 +104,11 @@ int main()
                 f_string_format(1," Payment Status: Confirmed \n");
                 print_border("=");
 
-                
+
             }
         }
         free(temp);
-    
+
     }
     fclose(fview_details);
 
