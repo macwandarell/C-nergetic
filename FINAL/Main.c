@@ -22,6 +22,13 @@
 
 #endif
 
+#ifdef _WIN32
+    #define status(status) (status)
+#else
+    #include <sys/wait.h>
+    #define status(status) WEXITSTATUS(status)
+#endif
+
 void printMain(){
     print_border(whitebold"*"end);
     f_string_format(1, orange"Welcome to RoomLeloBhai.Com\n"end);
@@ -89,7 +96,7 @@ int hotel(){
         if (choice == 'V' || choice == 'v') {
             system(ViewPage);
         } else if (choice == 'B' || choice == 'b') {
-            if (system(UserPage) == 1){
+            if (status(system(UserPage)) == 1){
                 return 0;
             }else{
                 system(Selection);
