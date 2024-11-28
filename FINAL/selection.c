@@ -4,6 +4,13 @@
 #include <ctype.h>
 #include <stdbool.h>
 #include "f_string.h"
+#ifdef _WIN32
+    #define Billing "Billing.exe"
+
+#else
+    #define Billing "./Billing"
+
+#endif
 
 struct hotel {
     int index_in_city;
@@ -167,7 +174,7 @@ int main(){
         clear_console();
         
         f_string_format(1, "\033[1m==============\033[0m\n");
-        f_string_format(1, "\033[38;5;208m          TRIVAGO   \033[0m\n");
+        f_string_format(1, "\033[38;5;208m          RoomLeloBhai.com   \033[0m\n");
         f_string_format(1, "\033[1m  ==============\033[0m\n");
         char commodities[7];
         printf("Select extra commodities:(type 0 if you don't want or 1 if you want)\n");
@@ -197,6 +204,7 @@ int main(){
         fclose(f1);
         printf("just before");
         SLEEP(4);
+        system(Billing);
         //Idhar tumhara function daal dena jo bhi billing wala ho
         return 0;
         

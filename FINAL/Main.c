@@ -102,7 +102,6 @@ int hotel(){
                             return 0;
             }else{
                 system(Selection);
-                system(Billing);
                 return 1;
             }
         } else if (choice == 'E' || choice == 'e') {
