@@ -29,13 +29,12 @@ int main(){
     FILE *f1=fopen("temp_details.csv","w");
     FILE *f2=fopen("temp_customer_choice.csv","r");
     int index;
-    if(!f1)
-        printf("File does not exist.\n");
-    if(!f2)
-        printf("File deos not exist.\n");
-    else{
-        char first_char=fgetc(f2);
-        index=atoi(&first_char);}
+    char buffer[1024];
+    fgets(buffer, sizeof(buffer), f2); // Read the single line
+        char *value = strtok(buffer, ",");   // Get the first value
+            index = atoi(value);         // Convert to integer
+    fclose(f2);
+    
     FILE *fp = fopen("hotelList.csv", "r");
     
     if (!fp) {
@@ -129,10 +128,10 @@ int main(){
             printf("Type number: ");
             scanf("%i",&type_num);
             getchar();
-            if(type_num==1){strncpy(type,"Single",sizeof(type));price=hotels[i].price_of_single;i=1;}
-            else if(type_num==2){strncpy(type,"Deluxe",sizeof(type));price=hotels[i].price_of_deluxe;i=1;}
-            else if(type_num==3){strncpy(type,"Villa",sizeof(type));price=hotels[i].price_of_villa;i=1;}
-            else if(type_num==4){strncpy(type,"Luxury",sizeof(type));price=hotels[i].price_of_luxury;i=1;}
+            if(type_num==1){strncpy(type,"Single",sizeof(type));price=hotels[index].price_of_single;i=1;}
+            else if(type_num==2){strncpy(type,"Deluxe",sizeof(type));price=hotels[index].price_of_deluxe;i=1;}
+            else if(type_num==3){strncpy(type,"Villa",sizeof(type));price=hotels[index].price_of_villa;i=1;}
+            else if(type_num==4){strncpy(type,"Luxury",sizeof(type));price=hotels[index].price_of_luxury;i=1;}
             else{printf("Type correct number.\n");}}
 
         int adults,kids,rooms;

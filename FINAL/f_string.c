@@ -66,6 +66,7 @@ void footer()
     f_string_format(1,"email id :temp@gmail.com");
     printf("\n");
     f_string_format(1,"CompanyName | (C) ");
+    printf("\n");
 }
 // Function to format and print a string with alignment
 void f_string_format(int align, const char* format, ...) {

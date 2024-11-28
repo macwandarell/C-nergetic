@@ -50,20 +50,20 @@ if (token != NULL) {
     strcpy(target_user, token);  // Copy the first token to target_user
 }
 
-token = strtok(NULL, ",");
-if (token != NULL) {
-    strcpy(target_password, token);  // Copy the second token to target_password
-}
-    fclose(fp);
+// token = strtok(NULL, ",");
+// if (token != NULL) {
+//     strcpy(target_password, token);  // Copy the second token to target_password
+// }
+//     fclose(fp);
 
-    // printf("Enter the username to search: ");
-    // fgets(target_user, sizeof(target_user), stdin);
-    // target_user[strcspn(target_user, "\n")] = '\0';
+    printf("Enter the username to search: ");
+     fgets(target_user, sizeof(target_user), stdin);
+    target_user[strcspn(target_user, "\n")] = '\0';
 
 
-    // printf("Enter the password: ");
-    // fgets(target_password, sizeof(target_password), stdin);
-    // target_password[strcspn(target_password, "\n")] = '\0';
+     printf("Enter the password: ");
+     fgets(target_password, sizeof(target_password), stdin);
+ target_password[strcspn(target_password, "\n")] = '\0';
 
 
     FILE *fview_details = fopen("user_booked_data.csv", "r");

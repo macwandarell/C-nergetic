@@ -200,6 +200,7 @@ int main()
 
     footer();
     
+    
     SLEEP(2); // Sleep for 2 seconds (wait for 2 seconds)
 
 
@@ -211,6 +212,7 @@ int main()
     if(confirm_payment==1)                          //Page 2 Pop ups
     {
         clear_console();
+        
         Company_name();
         header("RazorPay");
         f_string_format(1," Choose the Payment Method :");
