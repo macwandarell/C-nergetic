@@ -168,7 +168,7 @@ int main(){
                 printf("Minimum number of rooms needed are %d\n",r1);
                 printf("Sorry you need to book %d more rooms to accomodate everyone.\n",r1-rooms);
             }
-            else {printf("Congratulations, your rooms have been booked successfully!\n");a=1;}
+            else {printf(green"Congratulations, your rooms have been booked successfully!\n"end);a=1;}
         }
         SLEEP(4);
         clear_console();

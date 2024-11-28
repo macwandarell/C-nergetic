@@ -156,17 +156,17 @@ void rating_to_stars(float rating) {
 
     // Print full stars
     for (int i = 0; i < full_stars; i++) {
-        printf("★ ");
+        printf(yellow"★ "end);
     }
 
     // Print half star
     if (half_star) {
-        printf("✮ ");
+        printf(yellow"✮ "end);
     }
 
     // Print empty stars
     for (int i = 0; i < empty_stars; i++) {
-        printf("☆ ");
+        printf(yellow"☆ "end);
     }
 
     printf("\n");

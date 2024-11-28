@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include "f_string.h"
-#include "rating.h"
 #include <stdlib.h>// for atoi, atof
 #include <string.h>
 #ifdef _WIN32
@@ -158,19 +157,19 @@ int i=0;
         f_string_format(1, "\033[1m==============\033[0m");
         f_string_format(1, "\033[38;5;208m          TRIVAGO   \033[0m");
         f_string_format(1, "\033[1m  ==============\033[0m\n");
-        f_string_format(0, "\033[33m City List\033[0m");
-        f_string_format(0, "\033[33m 1. Mumbai\033[0m");
-        f_string_format(0, "\033[33m 2. Delhi\033[0m");
-        f_string_format(0, "\033[33m 3. Bangalore\033[0m");
-        f_string_format(0, "\033[33m 4. Kolkata\033[0m");
-        f_string_format(0, "\033[33m 5. Chennai\033[0m");
-        f_string_format(0, "\033[33m 6. Udaipur\033[0m");
-        f_string_format(0, "\033[33m 7. Ahmedabad\033[0m");
-        f_string_format(0, "\033[33m 8. Goa\033[0m");
-        f_string_format(0, "\033[33m 9. Manali\033[0m");
-        f_string_format(0, "\033[33m 10. Hyderabad\033[0m");
-        f_string_format(0, "\033[33m 11. Exit\033[0m");
-        f_string_format(1, "\033[1m ==============================\033[0m\n");
+        f_string_format(0, yellow" City List"end);
+        f_string_format(0, yellow" 1. Mumbai"end);
+        f_string_format(0, yellow" 2. Delhi"end);
+        f_string_format(0, yellow" 3. Bangalore"end);
+        f_string_format(0, yellow" 4. Kolkata"end);
+        f_string_format(0, yellow" 5. Chennai"end);
+        f_string_format(0, yellow" 6. Udaipur"end);
+        f_string_format(0, yellow" 7. Ahmedabad"end);
+        f_string_format(0, yellow" 8. Goa"end);
+        f_string_format(0, yellow" 9. Manali"end);
+        f_string_format(0, yellow" 10. Hyderabad"end);
+        f_string_format(0, yellow" 11. Exit"end);
+        f_string_format(1, yellow" ==============================\n"end);
         printf("Enter your choice of city by selecting the index number: ");
     
         scanf("%d", &city_number);

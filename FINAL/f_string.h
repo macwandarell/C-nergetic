@@ -13,6 +13,7 @@
 #define end "\033[0m"
 #define red "\033[31m"
 #define green "\033[32m"
+#define yellow "\033[33m"
 #define whitebold "\033[1;37m"
 #define bold "\033[1m"
 

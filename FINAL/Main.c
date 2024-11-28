@@ -84,9 +84,9 @@ int hotel(){
     clear_console();
     while(1){
         printUser();
-        printf("Book a Hotel(B)\n");
-        printf("View Booked Hotels(V)\n");
-        printf("Exit(E)\n");
+        printf(yellow"1. Book a Hotel(B)\n"end);
+        printf(yellow"2. View Booked Hotels(V)\n"end);
+        printf(yellow"3. Exit(E)\n"end);
 
         char choice;
         scanf(" %c", &choice);
