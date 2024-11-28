@@ -109,7 +109,7 @@ int main()
     int discount = (rand() % 5) + 1;
     int price_stay=price_room*nights;
     int int_price_commodities=0;
-    int mrp=price_stay+int_price_commodities;
+    int mrp=0;
     int total_price=mrp-((mrp*discount)/100);
     char extra_commodities[7][50];
     
@@ -125,6 +125,7 @@ int main()
             strcat(buffer1, ", ");
         }
     }
+    mrp=price_stay+int_price_commodities;
     
 
     
