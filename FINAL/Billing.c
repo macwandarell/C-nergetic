@@ -393,7 +393,7 @@ int main()
             
             //city,hotelname,location,checkindate,nights,rooms,type_of_room,total_price
             fprintf(fuser_booked_data,"%s,%s,%s,%s,%s,%s,%d,%d,%s,%d\n",user_name,password,city,hotel_name,address,check_indate,nights,rooms,type,total_price);
-
+            SLEEP(5);
             
             fclose(fuser_booked_data);
             fclose(fuser_info);
