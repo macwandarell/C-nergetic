@@ -148,7 +148,7 @@ int i=0;
 
         // Display menu
         f_string_format(1, "\033[1m==============\033[0m\n");
-        f_string_format(1, "\033[38;5;208m          TRIVAGO   \033[0m\n");
+        f_string_format(1, "\033[38;5;208m          RoomLeloBhai.com   \033[0m\n");
         f_string_format(1, "\033[1m  ==============\033[0m\n");
         f_string_format(0, "\033[33m City List\033[0m\n");
         f_string_format(0, "\033[33m 1. Mumbai\033[0m\n");
@@ -182,7 +182,8 @@ int i=0;
             case 8: clear_console();display_hotels_by_city(hotels, row-1, 8,city_name); break;
             case 9: clear_console();display_hotels_by_city(hotels, row-1, 9,city_name); break;
             case 10: clear_console();display_hotels_by_city(hotels, row-1, 10,city_name); break;
-            case 11: clear_console();printf("Exiting Hotel Page.Goodbye!👋\n");return 1;
+            case 11:
+                printf("Exiting Hotel Page.Goodbye!👋\n");SLEEP(2);system("./main");return 1;
             break;
         default: printf("Enter right number.\n");break;
         

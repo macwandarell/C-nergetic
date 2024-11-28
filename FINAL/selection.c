@@ -103,7 +103,7 @@ int main(){
         fclose(fp);
         
         f_string_format(1, "\033[1m==============\033[0m\n");
-        f_string_format(1, "\033[38;5;208m          TRIVAGO   \033[0m\n");
+        f_string_format(1, "\033[38;5;208m          RoomLeloBhai.com\033[0m\n");
         f_string_format(1, "\033[1m  ==============\033[0m\n");
         printf("How many nights? ");
         int nights;
