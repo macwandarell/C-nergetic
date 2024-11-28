@@ -36,14 +36,21 @@ int main()
     char username[100], password[100], city[100], hotel_name[100], address[100], check_indate[50], room_type[50];
     int nights, rooms, total_price;
 
-    printf("Enter the username to search: ");
-    fgets(target_user, sizeof(target_user), stdin);
-    target_user[strcspn(target_user, "\n")] = '\0';
+    FILE *fp = fopen("tempUser.csv", "r");
+    if (!fp) {
+        printf("File does not exist.\n");
+        return 1;
+    }
+    fscanf(fp, "%[^,],%s", target_user, target_password);
+
+    // printf("Enter the username to search: ");
+    // fgets(target_user, sizeof(target_user), stdin);
+    // target_user[strcspn(target_user, "\n")] = '\0';
 
 
-    printf("Enter the password: ");
-    fgets(target_password, sizeof(target_password), stdin);
-    target_password[strcspn(target_password, "\n")] = '\0';
+    // printf("Enter the password: ");
+    // fgets(target_password, sizeof(target_password), stdin);
+    // target_password[strcspn(target_password, "\n")] = '\0';
     
 
     FILE *fview_details = fopen("user_booked_data.csv", "r");

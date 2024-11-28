@@ -116,7 +116,5 @@ int main(void){
         }
     }
     clear_console();
-    entry();
-    hotel();
     return 0;
 }
