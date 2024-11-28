@@ -27,7 +27,7 @@ int main()
     print_border("\033[1m~\033[0m");
 
     printf("\n");
-    f_string_format(1,"\t\033[1;38;2;0;200;0m    Booking Information\033[0m\n");
+    f_string_format(1,"\t\033[1;38;2;0;200;0m\tBilling Information\033[0m\n");
 
     print_border("=");
 

@@ -116,7 +116,7 @@ int main(){
         int nights;
         scanf("%i",&nights);
         getchar();
-        char date[10];
+        char date[15];
         printf("From which date? (Please enter in dd/mm/yyyy format) ");
         scanf("%s",date);
         getchar();
@@ -200,7 +200,7 @@ int main(){
         scanf("%c",&commodities[6]);
         getchar();
         fprintf(f1,"%i,%i,%s,%i,%s,%i,%i,%s\n",nights,rooms,type,price,date,adults,kids,commodities);
-        fflush(f1);
+
         fclose(f1);
         printf("just before");
         SLEEP(4);
