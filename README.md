@@ -10,7 +10,7 @@
 
 ![image](https://github.com/user-attachments/assets/39fea929-8f0a-4fe1-81bc-f2e14c08b8a3)
 
-The entire project of hotel management system was divided into 2 teams internally.
+<li>The entire project of hotel management system was divided into 2 teams internally.
 
 Team 1 consisted of  Vedansh, Karan, Vedant who worked on the Admin login, view page and billing page.
 Team 2 consisted of Darell, Jos and Yashvi who worked on the customer registration, hotel selection, user main window.
@@ -18,6 +18,6 @@ Team 2 consisted of Darell, Jos and Yashvi who worked on the customer registrati
 Darell and Jos - Registration page, user main window and hotel selection page backend development and           	               csv file handling
 Yashvi  -  Front end/ UI development of the registration page and hotel data collection
 Vedansh – Login page, admin page frontend and backend development 
-Vedant and Karan – Billing and view_hotel page - front end and backend development
+Vedant and Karan – Billing and view_hotel page - front end and backend development</li>
 
 

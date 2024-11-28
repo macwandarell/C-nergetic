@@ -1,39 +1,20 @@
-# Compiler and flags
-CC = gcc
-CFLAGS = -Wall -Wextra -std=c99
-
-# Source files
-COMMON_SRC = f_string.c
-TARGETS = login registration admin main viewpage userpage selection billing
-
-# Default target
-all: $(TARGETS)
-
-# Rules for each executable
-login: Login.c $(COMMON_SRC)
-	$(CC) $(CFLAGS) Login.c $(COMMON_SRC) -o login
-
-registration: Registration.c $(COMMON_SRC)
-	$(CC) $(CFLAGS) Registration.c $(COMMON_SRC) -o registration
-
-admin: Admin.c $(COMMON_SRC)
-	$(CC) $(CFLAGS) Admin.c $(COMMON_SRC) -o admin
-
-main: Main.c $(COMMON_SRC)
-	$(CC) $(CFLAGS) Main.c $(COMMON_SRC) -o main
-
-viewpage: ViewPage.c $(COMMON_SRC)
-	$(CC) $(CFLAGS) ViewPage.c $(COMMON_SRC) -o viewpage
-
-userpage: user_page.c $(COMMON_SRC)
-	$(CC) $(CFLAGS) user_page.c $(COMMON_SRC) -o userpage
-
-selection: selection.c $(COMMON_SRC)
-	$(CC) $(CFLAGS) selection.c $(COMMON_SRC) -o selection
-
-billing: Billing.c $(COMMON_SRC)
-	$(CC) $(CFLAGS) Billing.c $(COMMON_SRC) -o billing
-
-# Clean target to remove all executables
+all: main registration admin login viewpage userpage selection billing
+main: main.c f_string.c
+	gcc Main.c f_string.c -o main
+registration: Registration.c f_string.c
+	gcc Registration.c f_string.c -o registration
+admin: Admin.c f_string.c
+	gcc Admin.c f_string.c -o admin
+login: Login.c f_string.c
+	gcc Login.c f_string.c -o login
+viewpage: ViewPage.c f_string.c
+	gcc ViewPage.c f_string.c -o viewpage
+userpage: user_page.c f_string.c
+	gcc user_page.c f_string.c -o userpage
+selection: selection.c f_string.c
+	gcc selection.c f_string.c -o selection
+billing: Billing.c f_string.c
+	gcc Billing.c f_string.c -o billing
 clean:
-	rm -f $(TARGETS)
+	rm -f main registration admin login viewpage userpage selection billing
+
