@@ -26,7 +26,7 @@ Vedansh – Login page, admin page frontend and backend development
 Vedant and Karan – Billing and view_hotel page - front end and backend development </li>
 
 
-<li><h1>Commands to run the code :</h1>
+<h1>Commands to run the code :</h1>
 
 Unzip the project folder and open the Command Prompt or PowerShell in correct Directory 
 
@@ -35,7 +35,7 @@ For running the code type: ./main
 To clear the executables type : make clean
 
 
-<strong>Project Description :</strong>
+<strong><h1>Project Description :</strong></h1>
 
 A Hotel Management System implemented by using C Programming Language. It is cross-compatible , dynamic and user-friendly. It contains the user as well as admin window.
 
@@ -45,7 +45,7 @@ Admin Window : Consists of features like adding new hotels, deleting existing ho
 The project is packed with mind-blowing features. 
 
                         Do Come and Explore !!! 
-</li>
+
 
 
 
