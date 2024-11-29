@@ -23,6 +23,29 @@ Yashvi  -  Front end/ UI development of the registration page and hotel data col
 
 Vedansh – Login page, admin page frontend and backend development
  
-Vedant and Karan – Billing and view_hotel page - front end and backend development</li>
+Vedant and Karan – Billing and view_hotel page - front end and backend development </li>
+
+
+<li><h1>Commands to run the code :</h1>
+
+Unzip the project folder and open the Command Prompt or PowerShell in correct Directory 
+
+Run the MakeFile using the command : make 
+For running the code type: ./main
+To clear the executables type : make clean
+
+
+<strong>Project Description :</strong>
+
+A Hotel Management System implemented by using C Programming Language. It is cross-compatible , dynamic and user-friendly. It contains the user as well as admin window.
+
+User Window : Consists of the features like booking hotel, adding extra commodities, register new users, etc. 
+Admin Window : Consists of features like adding new hotels, deleting existing hotels, viewing hotels, etc.
+
+The project is packed with mind-blowing features. 
+
+                        Do Come and Explore !!! 
+</li>
+
 
 
