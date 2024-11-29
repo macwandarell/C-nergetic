@@ -1,5 +1,5 @@
 all: main registration admin login viewpage userpage selection billing
-main: main.c f_string.c
+main: Main.c f_string.c
 	gcc Main.c f_string.c -o main
 registration: Registration.c f_string.c
 	gcc Registration.c f_string.c -o registration
