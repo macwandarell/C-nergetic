@@ -109,8 +109,7 @@ int main()
     int discount = (rand() % 5) + 1;
     int price_stay=price_room*nights;
     int int_price_commodities=0;
-    int mrp=price_stay+int_price_commodities;
-    int total_price=mrp-((mrp*discount)/100);
+    int mrp=0;
     char extra_commodities[7][50];
     
     char buffer1[1000] = {0};
@@ -125,7 +124,9 @@ int main()
             strcat(buffer1, ", ");
         }
     }
-    
+    mrp=price_stay+int_price_commodities;
+    float total_price = (mrp - ((mrp * discount) / 100.0f));
+
 
     
 //*****************************************************************************************************************/
@@ -152,7 +153,7 @@ int main()
     f_string_format(1,"\b\b  Discount for you :  %d %%",discount);//random genetated
     printf("\n");
     
-    f_string_format(1,"\b\b  Payment to be made :  Rs.%d",total_price);//price of stay + price of commodities - discount
+    f_string_format(1,"\b\b  Payment to be made :  Rs.%f",total_price);//price of stay + price of commodities - discount
     printf("\n");
 
 
@@ -394,7 +395,7 @@ int main()
             fuser_booked_data = fopen("user_booked_data.csv","a");
             
             //city,hotelname,location,checkindate,nights,rooms,type_of_room,total_price
-            fprintf(fuser_booked_data,"%s,%s,%s,%s,%s,%s,%d,%d,%s,%d\n",user_name,password,city,hotel_name,address,check_indate,nights,rooms,type,total_price);
+            fprintf(fuser_booked_data,"%s,%s,%s,%s,%s,%s,%d,%d,%s,%f\n",user_name,password,city,hotel_name,address,check_indate,nights,rooms,type,total_price);
             SLEEP(5);
             
             fclose(fuser_booked_data);
