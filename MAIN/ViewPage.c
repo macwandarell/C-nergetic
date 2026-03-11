@@ -4,7 +4,6 @@
 #include<string.h>
 
 
-
 void remove_newline(char *str)
     {
         size_t len = strlen(str);
